@@ -2,29 +2,19 @@ import urllib2
 import json
 from pprint import pprint
 from datetime import datetime, timedelta
-
-def getUrl(endpoint, getstring=''):
-	api_url = 'https://graph.facebook.com/%s?access_token=%s&' + getstring
-	token = 'AAACEdEose0cBAJD2wBH3HqwNYMObM4Wquqer3hD9u2XAstlURKEIUidWeEnj97FeZApj5Hy2vKu50xPPPKKIcwZBWQjmPtMF0kqSklYgZDZD'
-	
-	return api_url % (endpoint, token)
+from helper import *
 
 """ enter endpoint and getstring (which will be converted to proper api url) OR a url"""
-def getFbObj(endpoint='', getstring='', url=None):
-	if not url:
-		url = getUrl(endpoint,  getstring)
-	#print url
-	obj = urllib2.urlopen(url).read() 
+def getFileObj(filename):
+	f = open(filename, 'r')
+	obj = f.read()
+	f.close()
+
 	return json.loads(obj)
 
-def getTime(t):
-	return datetime.strptime(t, '%Y-%m-%dT%H:%M:%S+0000')
-def getFromTime():
-	return datetime.now() - timedelta(days=7)
-
-def doCheckins(uid):
-	checkins = getFbObj(uid + '/checkins')['data']
-	#pprint(checkins)
+def doCheckins():
+	checkins = getFileObj('checkins.json')
+	
 	print 'you have been to %i places your whole life!' % len(checkins)
 
 	recent = []
@@ -39,90 +29,136 @@ def doCheckins(uid):
 		print '----' + c['place']['name']
 	return checkins
 
-def doHome(uid):
-	home_all = getAllHome(uid)
+def showTop(arr, n):
+	for i in range(1,n+1):
+		print '\n%i by: %s' % (i, arr[-i]['from']['name']), 
+		print ' likes: ' + str(arr[-i]['likes']['count']), 
+		print ' id: ' + str(arr[-i]['id']) 
+		print ' msg: ' + arr[-i]['message']
 
-	#most liked
-	most_liked = []
-	likes = 0
+def doHome():
+	home_all = getFileObj('home.json')
 
-	ebows = 0
+	#
+	#tebows
+	#
+	ebows = []
 	for e in home_all:
 		if 'message' in e and 'ebow' in e['message']:
-			ebows +=1
-			
-	print str(ebows) + ' out of ' + str(len(home_all)) + ' were about tebow'
+			ebows.append(e)
 
+	print '\nTEBOWS:'
+	for e in ebows:
+		print e['from']['name'] + ', ',
+	print str(len(ebows)) + ' out of ' + str(len(home_all)) + ' were about tebow'
+
+	home_friends = []
 	for e in home_all:
-		pprint(e)
-		#some things can't be liked
-		if 'likes' not in e:
-			continue
-		#submissions by big things your following don't matter here
-		if 'category' in e['from']:
-			continue
-		n = e['likes']['count']
-		if n<likes:
-			continue
-		elif n == likes:
-			most_liked.append(e)
-		most_liked = [e]
-		likes = e['likes']['count']
+		if 'category' not in e['from']:
+			home_friends.append(e)
+	#
+	#most liked
+	#
+	home_likes = []
+	for e in home_friends:
+		if 'likes' in e:
+			home_likes.append(e)
+	print len(home_likes)
+	home_likes = sorted(home_likes, key=lambda(i): i['likes']['count'])
+	print '\nMOST LIKED:'
+	showTop(home_likes, 3)
+
+	#
+	# Comments 
+	#
+	home_comments = []
+	for e in home_friends:
+		if 'comments' in e:
+			home_comments.append(e)
+	home_comments = sorted(home_comments, key=lambda(i): i['comments']['count'])
+	print '\nMOST COMMENTS:'
+	showTop(home_comments, 3)
+
+	#
+	# PHOTO
+	#
+	home_photos = getByKeyValue(home_friends, 'type', 'photo')
+	home_photos = sorted(home_photos, key=lambda(i): count(i))
+	print '\nBEST PHOTOs:'
+	showTop(home_photos, 3)	
 	
-	for e in most_liked:
-		print '\nmost liked: '
-		pprint(e)
-
-def getAllHome(uid):
-	home_all = []
+	#
+	# RATE
+	#
+	begin = getTime(home_all[-1]['updated_time'])
+	end = getTime(home_all[0]['updated_time'])
+	duration = end - begin
+	dur_seconds = duration.total_seconds()
 	
-	def filter_dates(arr):
-		#if last index is after start time, then return whole array
-		if len(arr)==0:
-			return []
-		if getTime(arr[-1]['updated_time']) > getFromTime():
-			return arr
-		#else splice array
-		#TODO: efficent sort
-		for i in range(len(arr)):
-			if getTime(arr[i]['updated_time']) <= getFromTime():
-				return arr[1:i]
-		return []
+	#
+	# TYPE COUNTS
+	#
+	print '\n TYPE COUNTS'
+	for s in ['photo', 'link', 'status', 'checkin']:
+		type_count = getByKeyValue(home_friends, 'type', s)
+		print 'type %s: %i' % (s, len(type_count))
+		print '--- %s per hour' % str(len(type_count)/dur_seconds*3600*24)
 
+	#
+	# BY FRIEND
+	#
+	home_friends = sorted(home_friends, key=lambda(i): i['from']['id'])
+	home_uid = []
+	arr = []
 
-	home_raw = getFbObj(uid + '/home', 'limit=10')
-	home = home_raw['data']
-	n_requests = 1
-	while True:
-		filtered = filter_dates(home)
-		home_all.extend(filtered)
-		
-		if len(filtered)!=len(home) or len(home)==0:
-			break
-		#print '...requesting more updates from: ' + home_raw['paging']['next']
-		#print 'looking for: ' + str(getFromTime()) + ' at: ' + home[-1]['updated_time']
-		print '.',
-		home_raw = getFbObj(url=home_raw['paging']['next'])
-		home = home_raw['data']
-		n_requests = n_requests + 1
+	for f in home_friends:
+		if not len(arr):
+			arr.append(f)
+		elif f['from']['id'] == arr[0]['from']['id']:
+			arr.append(f)
+		else:
+			home_uid.append({'posts': arr, 'count' : len(arr)})
+			arr = [f]
+	home_uid.append({'posts': arr, 'count' : len(arr)})
+	home_uid = sorted(home_uid, key=lambda(i): i['count'])
+
+	print '\nMOST ACTIVE FRIENDS'
+	for i in range(1,10):
+		print home_uid[-i]['posts'][0]['from']['name']
+		for s in ['photo', 'link', 'status', 'checkin']:
+			print ' %s: %i,' % (s, len(getByKeyValue(home_uid[-i]['posts'], 'type', s))),
+		print 'total: %i' % home_uid[-i]['count']
 	
-	print str(n_requests) + ' requests were made totalling ' + str(len(home_all)) + ' items'
-	start = getTime(home_all[1]['updated_time'])
-	stop = getTime(home_all[-1]['updated_time'])
-	delta = start-stop
+	
+	print '\nBy Friends:'
 
-	print 'oldest request was at: ' + str(start) + ' to: ' + str(stop)
-	print str(delta)
-	return home_all	
+	
 
+	#
+	# BY TIME OF DAY
+	#
+
+	
+
+def getByKeyValue(arr, k, v):
+	ret_arr = []
+	for e in arr:
+		if e[k] == v:
+			ret_arr.append(e)
+	return ret_arr
+
+def count(obj):
+	if 'likes' in obj:
+		return obj['likes']['count']
+	else:
+		return 0
+	
 
 def main():
 	
-	#get all data 
-	uid = 'witoff'
+	checkins = doCheckins()
 
-	checkins = doCheckins(uid)
-	home = doHome(uid)
+	home = doHome()
 	exit(1)
 
 	user = getFbObj(uid)

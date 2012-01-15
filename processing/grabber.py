@@ -20,12 +20,17 @@ def getFbObj(endpoint='', getstring='', url=None):
 
 
 def getCheckins(uid):
-	checkins = getFbJson(uid + '/checkins')
+	print 'getting /checkins'
+	checkins = getFbObj(uid + '/checkins')
+
+	print 'writing /checkins'
 	f = open('checkins.json','w')
-	f.write(json.dumps(checkins))
+	f.write(json.dumps(checkins['data']))
 	f.close()
+	print '...done'
 
 def getAllHome(uid):
+	print 'getting /home'
 	home_all = []
 	
 	def filter_dates(arr):
@@ -42,7 +47,7 @@ def getAllHome(uid):
 		return []
 
 
-	home_raw = getFbJson(uid + '/home', 'limit=10')
+	home_raw = getFbObj(uid + '/home', 'limit=10')
 	home = home_raw['data']
 	n_requests = 1
 	while True:
@@ -53,8 +58,8 @@ def getAllHome(uid):
 			break
 		#print '...requesting more updates from: ' + home_raw['paging']['next']
 		#print 'looking for: ' + str(getFromTime()) + ' at: ' + home[-1]['updated_time']
-		print '.',
-		home_raw = getFbJson(url=home_raw['paging']['next'])
+		print '...'
+		home_raw = getFbObj(url=home_raw['paging']['next'])
 		home = home_raw['data']
 		n_requests = n_requests + 1
 	
@@ -66,10 +71,12 @@ def getAllHome(uid):
 	print 'oldest request was at: ' + str(start) + ' to: ' + str(stop)
 	print str(delta)
 	
+	print 'writing /home'
 	f = open('home.json', 'w')
-	f.write(
+	f.write(json.dumps(home_all))
+	f.close()
+	print '...done'
 
-	return home_all	
 
 
 def main():
@@ -78,7 +85,7 @@ def main():
 	uid = 'witoff'
 
 	getCheckins(uid)
-	getHome(uid)
+	getAllHome(uid)
 	exit(0)
 
 if __name__ == "__main__":
