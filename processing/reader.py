@@ -34,7 +34,8 @@ def showTop(arr, n):
 		print '\n%i by: %s' % (i, arr[-i]['from']['name']), 
 		print ' likes: ' + str(arr[-i]['likes']['count']), 
 		print ' id: ' + str(arr[-i]['id']) 
-		print ' msg: ' + arr[-i]['message']
+		if 'message' in arr[-i]:
+			print ' msg: ' + arr[-i]['message']
 
 def doHome():
 	home_all = getFileObj('home.json')
@@ -123,20 +124,52 @@ def doHome():
 	home_uid = sorted(home_uid, key=lambda(i): i['count'])
 
 	print '\nMOST ACTIVE FRIENDS'
-	for i in range(1,10):
+	for i in range(1,6):
 		print home_uid[-i]['posts'][0]['from']['name']
 		for s in ['photo', 'link', 'status', 'checkin']:
 			print ' %s: %i,' % (s, len(getByKeyValue(home_uid[-i]['posts'], 'type', s))),
 		print 'total: %i' % home_uid[-i]['count']
 	
+	print '\nMOST OVERALL LIKES'
+	for u in home_uid:
+		likes = 0
+		for e in u['posts']:
+			if 'likes' in e:
+				likes += e['likes']['count']
+		u['likes'] = likes
+	home_uid = sorted(home_uid, key=lambda(i): i['likes'])
+	for i in range(1,6):
+		print '%s received %i likes' % (home_uid[-i]['posts'][0]['from']['name'], home_uid[-i]['likes'])
 	
-	print '\nBy Friends:'
+	print '\nHIGHEST LIKE RATIO'
+	def ratio(i):
+		if not i['likes'] or not i['count']:
+			return 0
+		return i['likes']/i['count']
+	home_uid = sorted(home_uid, key=lambda(i): ratio(i))
+	for i in range(1,6):
+		hid = home_uid[-i]
+		print '%s had a %f with %i likes over %i posts ' % (hid['posts'][0]['from']['name'], hid['likes']/hid['count'], hid['likes'], hid['count'])
+	
 
-	
+
+	#sort by number of likes they've gotten
 
 	#
 	# BY TIME OF DAY
 	#
+	by_hour = {}
+	#preallocate
+	for i in range(24):
+		by_hour[i] = []
+
+	for e in home_all:
+		time = getTime(e['updated_time'])
+		by_hour[time.hour].append(e)
+
+	print '\nUSAGE BY HOUR'
+	for i in range(24):
+		print '%i: %s' % (i, '#' * len(by_hour[i]))
 
 	
 
@@ -159,6 +192,7 @@ def main():
 	checkins = doCheckins()
 
 	home = doHome()
+
 	exit(1)
 
 	user = getFbObj(uid)

@@ -6,7 +6,7 @@ from helper import *
 
 def getUrl(endpoint, getstring=''):
 	api_url = 'https://graph.facebook.com/%s?access_token=%s&' + getstring
-	token = 'AAACEdEose0cBAJD2wBH3HqwNYMObM4Wquqer3hD9u2XAstlURKEIUidWeEnj97FeZApj5Hy2vKu50xPPPKKIcwZBWQjmPtMF0kqSklYgZDZD'
+	token = 'AAACEdEose0cBAIawLHPneXc8YZCscTK92bRlp4vGpSkMxOzdusHpoStK2kO134d9qrqt5S1Q7d30XQuweYDz6RZBVYWFZAr7iDBKufA8AZDZD'
 	
 	return api_url % (endpoint, token)
 
