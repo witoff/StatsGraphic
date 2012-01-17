@@ -3,10 +3,15 @@ import json
 from pprint import pprint
 from datetime import datetime, timedelta
 from helper import *
+import sys
 
 def getUrl(endpoint, getstring=''):
+	if len(sys.argv)==2:
+		token = sys.argv[1]
+	else:
+		token = 'AAACEdEose0cBAC0VPEdE9exDakElNKoZBx2cU0UvyQF3LhvKpszMpPPr30UH0HEJEw6QaJsUPZAdjpoGcFKzQqESvZCV1xdtv0AfhKHwgZDZD'
+	
 	api_url = 'https://graph.facebook.com/%s?access_token=%s&' + getstring
-	token = 'AAACEdEose0cBAIawLHPneXc8YZCscTK92bRlp4vGpSkMxOzdusHpoStK2kO134d9qrqt5S1Q7d30XQuweYDz6RZBVYWFZAr7iDBKufA8AZDZD'
 	
 	return api_url % (endpoint, token)
 
@@ -29,35 +34,33 @@ def getCheckins(uid):
 	f.close()
 	print '...done'
 
-def getAllHome(uid):
-	print 'getting /home'
-	home_all = []
-	
-	def filter_dates(arr):
+def filter_dates(arr, fromTime=getFromTime()):
 		#if last index is after start time, then return whole array
 		if len(arr)==0:
 			return []
-		if getTime(arr[-1]['updated_time']) > getFromTime():
+		if getTime(arr[-1]['updated_time']) > fromTime:
 			return arr
 		#else splice array:
-		#TODO: efficent sort
+		#todo: efficent sort
 		for i in range(len(arr)):
-			if getTime(arr[i]['updated_time']) <= getFromTime():
+			if getTime(arr[i]['updated_time']) <= fromTime:
 				return arr[1:i]
 		return []
 
 
-	home_raw = getFbObj(uid + '/home', 'limit=10')
+def getAllExtended(uid, endpoint, chunksize=25, fromTime=getFromTime()):
+	print 'getting /' + endpoint
+	home_all = []
+	
+	home_raw = getFbObj(uid + '/' + endpoint, 'limit=' + str(chunksize))
 	home = home_raw['data']
 	n_requests = 1
 	while True:
-		filtered = filter_dates(home)
+		filtered = filter_dates(home, fromTime)
 		home_all.extend(filtered)
 		
 		if len(filtered)!=len(home) or len(home)==0:
 			break
-		#print '...requesting more updates from: ' + home_raw['paging']['next']
-		#print 'looking for: ' + str(getFromTime()) + ' at: ' + home[-1]['updated_time']
 		print '...'
 		home_raw = getFbObj(url=home_raw['paging']['next'])
 		home = home_raw['data']
@@ -71,12 +74,38 @@ def getAllHome(uid):
 	print 'oldest request was at: ' + str(start) + ' to: ' + str(stop)
 	print str(delta)
 	
-	print 'writing /home'
-	f = open('home.json', 'w')
+	print 'writing /' + endpoint
+	f = open(endpoint + '.json', 'w')
 	f.write(json.dumps(home_all))
 	f.close()
 	print '...done'
 
+def getFriends(uid):
+	user = getFbObj(uid)
+	#pprint(user)
+	
+	friends = getFbObj(uid + '/friends')['data']
+	pprint(friends)
+	
+	statuses = getFbObj(uid + '/statuses')['data']
+	pprint(friends)
+
+	#get user info for each friend
+	for f in friends:
+		user = getFbObj(str(f['id']))
+		f['user'] = user
+
+
+	#get events for each friend
+	for f in friends:
+		events = getFbObj(f['id']+'/events')['data']
+		print f['name'] + ' has %i events' % len(events)
+		f['events'] = events
+
+	#serialize
+	f = open('friendevents.json', 'w')
+	f.write(json.dumps(friends))
+	exit(0)
 
 
 def main():
@@ -85,7 +114,10 @@ def main():
 	uid = 'witoff'
 
 	getCheckins(uid)
-	getAllHome(uid)
+	getAllExtended(uid, 'home')
+	getAllExtended(uid, 'feed', 50, fromTime=datetime.now() - timedelta(days=365))
+	#getFriends(uid)
+
 	exit(0)
 
 if __name__ == "__main__":
