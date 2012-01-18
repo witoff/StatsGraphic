@@ -29,7 +29,7 @@ def getCheckins(uid):
 	checkins = getFbObj(uid + '/checkins')
 
 	print 'writing /checkins'
-	f = open('checkins.json','w')
+	f = open('data/checkins.json','w')
 	f.write(json.dumps(checkins['data']))
 	f.close()
 	print '...done'
@@ -75,7 +75,7 @@ def getAllExtended(uid, endpoint, chunksize=25, fromTime=getFromTime()):
 	print str(delta)
 	
 	print 'writing /' + endpoint
-	f = open(endpoint + '.json', 'w')
+	f = open('data/' + endpoint + '.json', 'w')
 	f.write(json.dumps(home_all))
 	f.close()
 	print '...done'
@@ -103,7 +103,7 @@ def getFriends(uid):
 		f['events'] = events
 
 	#serialize
-	f = open('friendevents.json', 'w')
+	f = open('data/friendevents.json', 'w')
 	f.write(json.dumps(friends))
 	exit(0)
 
