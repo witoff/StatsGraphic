@@ -20,7 +20,48 @@ $(document).ready(function() {
     //
     //Preprocess
     //
-    var maxAge = 40;
+
+    function timeChart(data, div, title)
+    {
+        var ageChart = new Highcharts.Chart({
+        chart: {
+            renderTo: div,
+            type: 'area'
+        },
+        title: {
+            text: title
+        },
+        xAxis: {
+            title: {
+                text: 'Time'
+            },
+            categories: newIncreasingArray(24)
+        },
+        yAxis: {
+            title: {
+                text: '# of Friends'
+            }
+        },
+        series: [{
+            name: 'All Friends',
+            data: data
+        }],
+        tooltip: {
+            formatter: function(){
+                if (this.series.name=='Boy')
+                    return 'boy names';
+                return 'girl names';
+            }}
+
+        });
+    }
+    timeChart(fbdata.feed.time.posts, 'ageGender', "What time are your friends using facebook?");
+    timeChart(fbdata.home.time.posts, 'ageOutliers', "What time are YOU using facebook?");
+
+
+
+
+    /*var maxAge = 40;
     var skipFirstAges = 18;
     var ages = newFilledArray(maxAge, 0);
     var boyAges = newFilledArray(maxAge, 0);
@@ -96,7 +137,7 @@ $(document).ready(function() {
     fillAgeChart(ages, maxAge, skipFirstAges);
     fillAgeGender(boyAges, girlAges, maxAge, skipFirstAges);
 
-
+*/
 });
 
 

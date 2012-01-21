@@ -5,16 +5,23 @@ from datetime import datetime, timedelta
 from helper import *
 import sys
 
-def getUrl(endpoint, getstring=''):
+
+def getToken():
 	if len(sys.argv)==2:
-		token = sys.argv[1]
-	else:
-		token = 'AAACEdEose0cBAC0VPEdE9exDakElNKoZBx2cU0UvyQF3LhvKpszMpPPr30UH0HEJEw6QaJsUPZAdjpoGcFKzQqESvZCV1xdtv0AfhKHwgZDZD'
-	
+		return sys.argv[1]
+	#else:
+	#	return 'AAACEdEose0cBAC0VPEdE9exDakElNKoZBx2cU0UvyQF3LhvKpszMpPPr30UH0HEJEw6QaJsUPZAdjpoGcFKzQqESvZCV1xdtv0AfhKHwgZDZD'
+
+def getUrl(endpoint, getstring=''):
+	token = getToken()
 	api_url = 'https://graph.facebook.com/%s?access_token=%s&' + getstring
 	
 	return api_url % (endpoint, token)
 
+def getUsername():
+	obj = getFbObj('me')
+	return obj['username']
+	
 """ enter endpoint and getstring (which will be converted to proper api url) OR a url"""
 def getFbObj(endpoint='', getstring='', url=None):
 	if not url:
@@ -111,10 +118,11 @@ def getFriends(uid):
 def main():
 	
 	#get all data 
-	uid = 'witoff'
+	#uid = 'witoff'
 
+	uid = getUsername()
 	getCheckins(uid)
-	getAllExtended(uid, 'home')
+	getAllExtended(uid, 'home', 100)
 	getAllExtended(uid, 'feed', 50, fromTime=datetime.now() - timedelta(days=365))
 	#getFriends(uid)
 
