@@ -15,7 +15,8 @@ function newIncreasingArray(len) {
     return rv;
 }
 
-$(document).ready(function() {
+
+function plotData(fbdata) {
     timeChart(fbdata.feed.time.posts, 'yourTime', "What time are YOU using facebook?");
     timeChart(fbdata.home.time.posts, 'friendsTime', "What time are your friends using facebook?");
 

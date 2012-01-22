@@ -25,41 +25,41 @@ Loading...
 <div class="fb-login-button" show-faces="true" scope="email,user_checkins,read_stream ">
 Login with Facebook
 </div>
+
 <script>
 window.fbAsyncInit = function() {
-  FB.init({ appId: '246082168796906', 
-	    status: true, 
+    FB.init({ appId: '246082168796906',
+	    status: true,
 	    cookie: true,
 	    xfbml: true,
 	    oauth: true});
 
-  function updateButton(response) {
- if (response.status === 'connected') {
-      //user is already logged in and connected
-      var userInfo = document.getElementById('user-info');
-      FB.api('/me', function(response) {
-        userInfo.innerHTML = '<img src="https://graph.facebook.com/' 
-	  + response.id + '/picture">' + response.name;
-      });
+      function updateButton(response) {
+         if (response.status === 'connected') {
+            //user is already logged in and connected
 
-	$.ajax({url: 'api?token=' + response.authResponse.accessToken, 
-	type: "GET",
-	timeout:60000,
-	dataType: "text",
-	success: function(data) {
-	$('#content').html(data);
-	}});
-
-    } else {
-	//button.innerHTML="<img src=\"http://who.deleted.me/res/login-button.png\" />";
-      //user is not connected to your app or logged out
-	alert('user is not connected of is logged out');
+            FB.api('/me', function(response) {
+                $('#user-info').innerHTML = '<img src="https://graph.facebook.com/' + response.id + '/picture">' + response.name;
+            });
+	        $.ajax({url: 'api?token=' + response.authResponse.accessToken,
+                type: "GET",
+	            timeout:60000,
+                dataType: "text",
+                success: function(data) {
+                    //$('#content').html(data);
+                    alert('response!');
+                    plotData(data);
+	        }});
+        } else {
+	        //button.innerHTML="<img src=\"http://who.deleted.me/res/login-button.png\" />";
+            //user is not connected to your app or logged out
+             $('#user-info').innerHTML('user is not connected of is logged out');
       }
     
   }
 
   // run once with current status and whenever the status changes
-  FB.getLoginStatus(updateButton);
+  //FB.getLoginStatus(updateButton);
   FB.Event.subscribe('auth.login', updateButton);	
 };
 	
