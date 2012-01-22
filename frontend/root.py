@@ -11,7 +11,7 @@ app = web.application(urls, globals())
 
 class index (object):
     def GET(self):
-	f = file('view/index.htm', 'r')
+	f = file('static/index.htm', 'r')
 	s = f.read()
 	f.close()
 	return s
