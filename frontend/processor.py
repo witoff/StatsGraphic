@@ -41,7 +41,7 @@ class Processor(object):
 		while (tc.isAlive() or th.isAlive() or tf.isAlive()):
 			sleep(.5)
 
-		return response 
+		return json.dumps(response)
 
 	def doCheckins(self):
 		v = {} 

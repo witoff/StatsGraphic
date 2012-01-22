@@ -21,8 +21,12 @@
 <a id="login-btn">
 </a>
 <div id='content'>
-Loading...
 </div>
+<div id="topPhotos"> </div>
+<div id="pres"> </div>
+<div id="friendsTime"> </div>
+<div id="yourTime"> </div>
+<div id="text"> </div>
 
 <div class="fb-login-button" show-faces="true" scope="email,user_checkins,read_stream ">
 Login with Facebook
@@ -43,15 +47,12 @@ window.fbAsyncInit = function() {
             FB.api('/me', function(response) {
                 $('#user-info').innerHTML = '<img src="https://graph.facebook.com/' + response.id + '/picture">' + response.name;
             });
-	        $.ajax({url: 'api?token=' + response.authResponse.accessToken,
-                type: "GET",
-	            timeout:60000,
-                dataType: "text",
-                success: function(data) {
+		$.getJSON('api?token=' + response.authResponse.accessToken, function (data) {
                     //$('#content').html(data);
-                    alert('response!');
+		    //alert(data.feed.average_status_length);
+                    //alert('response!');
                     plotData(data);
-	        }});
+		});
         } else {
 	        //button.innerHTML="<img src=\"http://who.deleted.me/res/login-button.png\" />";
             //user is not connected to your app or logged out
@@ -61,8 +62,8 @@ window.fbAsyncInit = function() {
   }
 
   // run once with current status and whenever the status changes
-  //FB.getLoginStatus(updateButton);
-  FB.Event.subscribe('auth.login', updateButton);	
+  FB.getLoginStatus(updateButton);
+  //FB.Event.subscribe('auth.login', updateButton);	
 };
 	
 (function() {

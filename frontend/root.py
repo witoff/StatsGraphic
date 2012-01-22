@@ -19,7 +19,9 @@ class index (object):
 class api(object):
     def GET(self):
 		p = Processor(web.input('token').token)
-		return p.getProcessed()
+		s = p.getProcessed()
+		s = s.replace('\n','')
+		return s
 
 
 

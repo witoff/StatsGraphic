@@ -17,11 +17,15 @@ function newIncreasingArray(len) {
 
 
 function plotData(fbdata) {
-    timeChart(fbdata.feed.time.posts, 'yourTime', "What time are YOU using facebook?");
-    timeChart(fbdata.home.time.posts, 'friendsTime', "What time are your friends using facebook?");
-
-    showTopPhotos(fbdata);
+    //showTopPhotos(fbdata);
     presHistogram(fbdata, 'pres');
+    
+    timeChart([fbdata.feed.time.posts, fbdata.home.time.posts], 'yourTime', "What time are you using facebook?");
+    
+    return;
+    //timeChart(fbdata.feed.time.posts, 'yourTime', "What time are YOU using facebook?");
+    //timeChart(fbdata.home.time.posts, 'friendsTime', "What time are your friends using facebook?");
+	
 
     var buffer = [];
     buffer.push('<b>CHECKINS</b>');
@@ -61,6 +65,7 @@ function plotData(fbdata) {
         buffer.push('---name: ' + active[i]['name']);
         buffer.push('---count: ' + active[i]['like_count']);
     }
+    /*
     buffer.push('<br/>Like Ratio:');
     var active = fbdata.feed.friend.ratio;
     for (var i=0; i<active.length;i++){
@@ -71,23 +76,23 @@ function plotData(fbdata) {
         buffer.push('---likes: ' + active[i]['like_count']);
         buffer.push('---ratio: ' + active[i]['like_ratio']);
     }
-
+    */
     $('#text').append(buffer.join('<br/>'));
     $('#text').append('<br/>');
 
     
-});
+};
 
 function showTopPhotos(data){
     var photos = data.home.type.photo.top;
     var buffer = [];
 
     $(photos).each(function(){
-        buffer.push('<div style="border: solid 1px;">');
+        buffer.push('<div style="float:left;">');
         buffer.push('from: ' + this.from);
         buffer.push('<br/>likes: ' + this.like_count);
         buffer.push('<br/>message: ' + this.msg);
-        buffer.push('<img src="' + this.picture + '" alt="">');
+        buffer.push('<br/><img src="' + this.picture + '" alt="">');
         buffer.push('</div>');
     })
 
@@ -110,7 +115,7 @@ function presHistogram(data, div){
             type: 'bar'
         },
         title: {
-            text: 'President mentions'
+            text: 'What Presidents have your friends been mentioning?'
         },
         xAxis: {
             title: {
@@ -160,13 +165,16 @@ function timeChart(data, div, title)
         },
         series: [{
             name: 'All Friends',
-            data: data
+            data: data[0]
+        },{
+            name: 'Your Usage',
+            data: data[1]
         }],
         tooltip: {
             formatter: function(){
                 if (this.series.name=='Boy')
-                    return 'boy names';
-                return 'girl names';
+                    return 'x';
+                return 'y';
             }}
 
     });
