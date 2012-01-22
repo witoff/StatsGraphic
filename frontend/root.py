@@ -1,6 +1,6 @@
 
 import web
-
+from processor import Processor
 urls = (
   '/', 'index',
   '/api', 'api',
@@ -11,14 +11,15 @@ app = web.application(urls, globals())
 
 class index (object):
     def GET(self):
-	f = file('index.htm', 'r')
+	f = file('view/index.htm', 'r')
 	s = f.read()
 	f.close()
 	return s
         #return "Hello, world!"
 class api(object):
     def GET(self):
-	return web.input('token').token
+		p = Processor(web.input('token').token)
+		return p.getProcessed()
 
 
 
