@@ -105,7 +105,7 @@ class Grabber(object):
 	def getHome(self):
 		return self.__getAllExtended('home', 100)
 	def getFeed(self):
-		return self.__getAllExtended('feed', 50, fromTime=datetime.now() - timedelta(days=365))
+		return self.__getAllExtended('feed', 100, fromTime=datetime.now() - timedelta(days=365))
 	
 
 def main():

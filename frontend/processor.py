@@ -5,7 +5,8 @@ from pprint import pprint, pformat
 from datetime import datetime, timedelta
 from helper import *
 from grabber import Grabber
-import thread
+from threading import Thread
+from time import sleep
 
 class Processor(object):
 	
@@ -21,21 +22,26 @@ class Processor(object):
 		return json.loads(obj)
 	
 	def getProcessed(self):
-		checkins = None
-		home = None
-		feed = None
-
+		response = {}
 		def runCheckins():
-			checkins = self.doCheckins()
+			response['checkins'] = self.doCheckins()
 		def runHome():
-			home = self.doHome()
+			response['home'] = self.doHome()
 		def runFeed():
-			feed = self.doFeed()
+			response['feed'] = self.doFeed()
 
-		thread.start_new_thread(runCheckins,())
-		thread.start_new_thread(runHome,())
-		thread.start_new_thread(runFeed,())
-		return {'checkins' : checkins, 'feed' : feed, 'home' : home}
+		tc = Thread(target=runCheckins)
+		th = Thread(target=runHome)
+		tf = Thread(target=runFeed)
+
+		tc.start()
+		th.start()
+		tf.start()
+		
+		while (tc.isAlive() or th.isAlive() or tf.isAlive()):
+			sleep(.5)
+
+		return response 
 
 	def doCheckins(self):
 		v = {} 
