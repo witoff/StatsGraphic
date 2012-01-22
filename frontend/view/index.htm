@@ -44,6 +44,7 @@ window.fbAsyncInit = function() {
 
 	$.ajax({url: 'api?token=' + response.authResponse.accessToken, 
 	type: "GET",
+	timeout:60000,
 	dataType: "text",
 	success: function(data) {
 	$('#content').html(data);

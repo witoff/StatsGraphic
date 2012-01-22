@@ -5,6 +5,7 @@ from pprint import pprint, pformat
 from datetime import datetime, timedelta
 from helper import *
 from grabber import Grabber
+import thread
 
 class Processor(object):
 	
@@ -20,18 +21,24 @@ class Processor(object):
 		return json.loads(obj)
 	
 	def getProcessed(self):
-		pubvars = {}	
-		checkins = self.doCheckins(pubvars)
+		checkins = None
+		home = None
+		feed = None
 
-		home = self.doHome(pubvars)
-		
-		feed = self.doFeed(pubvars)
+		def runCheckins():
+			checkins = self.doCheckins()
+		def runHome():
+			home = self.doHome()
+		def runFeed():
+			feed = self.doFeed()
 
-		return pubvars
+		thread.start_new_thread(runCheckins,())
+		thread.start_new_thread(runHome,())
+		thread.start_new_thread(runFeed,())
+		return {'checkins' : checkins, 'feed' : feed, 'home' : home}
 
-	def doCheckins(self, pubvars):
-		pubvars['checkins'] = {}
-		v = pubvars['checkins']
+	def doCheckins(self):
+		v = {} 
 		
 		#checkins = self.__getFileObj('data/checkins.json')
 		checkins = self.g.getCheckins()
@@ -55,7 +62,7 @@ class Processor(object):
 			v['week_names'].append(c['place']['name'])
 		
 		
-		return checkins
+		return v
 
 	def __showTop(self, arr, n):
 		ret = []
@@ -114,9 +121,8 @@ class Processor(object):
 
 		return home_uid
 
-	def doHome(self, pubvars):
-		pubvars['home'] = {}
-		v = pubvars['home']
+	def doHome(self):
+		v = {} 
 
 		#home_all = self.__getFileObj('data/home.json')
 		home_all = self.g.getHome()
@@ -300,11 +306,10 @@ class Processor(object):
 		v['average_status_length'] = float(sum)/len(status_length)
 		print 'average status length: %f characters' % (float(sum)/len(status_length))
 		
-		return home_all
+		return v
 
-	def doFeed(self, pubvars):
-		pubvars['feed'] = {}
-		v = pubvars['feed']
+	def doFeed(self):
+		v = {} 
 
 		#feed_all = self.__getFileObj('data/feed.json')
 		feed_all = self.g.getFeed()
@@ -425,7 +430,7 @@ class Processor(object):
 				sum += len(e['message'])
 		print 'average status length: %f characters' % (float(sum)/len(status_length))
 		v['average_status_length'] = float(sum)/len(status_length)
-		return feed_all
+		return v
 
 	def __getByKeyValue(self, arr, k, v):
 		ret_arr = []
