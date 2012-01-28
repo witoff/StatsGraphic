@@ -20,7 +20,7 @@ class api(object):
     def GET(self):
 		p = Processor(web.input('token').token)
 		s = p.getProcessed()
-		s = s.replace('\n','')
+		#s = s.replace('\n','')
 		return s
 
 

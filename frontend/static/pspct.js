@@ -21,7 +21,6 @@ function plotData(fbdata) {
     presHistogram(fbdata, 'pres');
     
     timeChart([fbdata.feed.time.posts, fbdata.home.time.posts], 'yourTime', "What time are you using facebook?");
-    
     return;
     //timeChart(fbdata.feed.time.posts, 'yourTime', "What time are YOU using facebook?");
     //timeChart(fbdata.home.time.posts, 'friendsTime', "What time are your friends using facebook?");

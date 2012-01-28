@@ -10,18 +10,22 @@ class Grabber(object):
 
 	def __init__(self, token):
 		self.token = token
-		self.uid = None
+		self.user = None 
 		self.getUsername()
 
 	def __getUrl(self, endpoint, getstring=''):
 		api_url = 'https://graph.facebook.com/%s?access_token=%s&' + getstring
 		
 		return api_url % (endpoint, self.token)
+	
+	def getUser(self):
+		if self.user:
+			return self.user
+		self.user = self.__getFbObj('me')
+		return self.user
 
 	def getUsername(self):
-		if not self.uid:
-			self.uid = self.__getFbObj('me')['username']
-		return self.uid
+		return self.getUser()['username']
 		
 	""" enter endpoint and getstring (which will be converted to proper api url) OR a url"""
 	def __getFbObj(self, endpoint='', getstring='', url=None):
@@ -49,7 +53,7 @@ class Grabber(object):
 		print 'getting /' + endpoint
 		home_all = []
 		
-		home_raw = self.__getFbObj(self.uid + '/' + endpoint, 'limit=' + str(chunksize))
+		home_raw = self.__getFbObj(self.getUsername() + '/' + endpoint, 'limit=' + str(chunksize))
 		home = home_raw['data']
 		n_requests = 1
 		while True:
@@ -74,13 +78,13 @@ class Grabber(object):
 		return home_all
 	
 	def getFriends(self):
-		user = self.__getFbObj(self.uid)
+		user = self.__getFbObj(self.getUsername())
 		#pprint(user)
 		
-		friends = self.__getFbObj(self.uid + '/friends')['data']
+		friends = self.__getFbObj(self.getUsername() + '/friends')['data']
 		pprint(friends)
 		
-		statuses = self.__getFbObj(self.uid + '/statuses')['data']
+		statuses = self.__getFbObj(self.getUsername() + '/statuses')['data']
 		pprint(friends)
 
 		#get user info for each friend
@@ -99,7 +103,7 @@ class Grabber(object):
 
 	def getCheckins(self):
 		print 'getting /checkins'
-		checkins = self.__getFbObj(self.uid + '/checkins')
+		checkins = self.__getFbObj(self.getUsername() + '/checkins')
 		return checkins['data']
 
 	def getHome(self):
@@ -116,7 +120,6 @@ def main():
 		token = sys.argv[1]
 
 	g = Grabber(token)
-	uid = g.getUsername()
 	checkins = g.getCheckins()
 	home = g.getHome()
 	feed = g.getFeed()
