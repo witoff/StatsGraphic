@@ -6,3 +6,12 @@ def getTime(t, timezone=-8):
 
 def getFromTime():
 	return datetime.now() - timedelta(days=7)
+
+""" open the json in 'filename' """
+def getFileObj(filename):
+	f = open(filename, 'r')
+	obj = f.read()
+	f.close()
+
+	return json.loads(obj)
+	

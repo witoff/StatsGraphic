@@ -8,13 +8,15 @@ from processor import *
 from grabber import Grabber
 from threading import Thread
 from time import sleep
+from ArrayProcessor import ArrayProcessor as ap
 
 class HomeProcessor(Processor):
 	
 	def __init__(self, token):
-		super(HomeProcessor, self, token).__init__()
+		Processor.__init__(self, token)
 	
-	def getProcessed(self):	
+	def getProcessed(self):
+		response = {}	
 		def runCheckins():
 			response['checkins'] = self.doCheckins()
 		def runHome():
@@ -131,16 +133,16 @@ class HomeProcessor(Processor):
 		#
 		#most liked
 		#
-		home_friends = sorted(home_friends, key=lambda(i): self.__fieldCount(i))
+		home_friends = sorted(home_friends, key=lambda(i): self._fieldCount(i))
 		#print '\nMOST LIKED:'
-		v['most_liked'] = self.__getTopPosts(home_friends, 3)
+		v['most_liked'] = ap(home_friends).getTopPosts(3)
 
 		#
 		# Comments 
 		#
-		home_friends = sorted(home_friends, key=lambda(i): self.__fieldCount(i, 'comments'))
+		home_friends = sorted(home_friends, key=lambda(i): self._fieldCount(i, 'comments'))
 		#print '\nMOST COMMENTS:'
-		v['most_comments'] = self.__getTopPosts(home_friends, 3)
+		v['most_comments'] = ap(home_friends).getTopPosts(3)
 
 
 		#
@@ -181,8 +183,8 @@ class HomeProcessor(Processor):
 		for s in ['photo', 'link', 'status', 'checkin']:
 			#print s.upper()
 			
-			home_filtered = self.__getByKeyValue(home_friends, 'type', s)
-			home_filtered = sorted(home_filtered, key=lambda(i): self.__fieldCount(i))
+			home_filtered = ap(home_friends).getByKeyValue('type', s)
+			home_filtered = sorted(home_filtered, key=lambda(i): self._fieldCount(i))
 			if len(home_filtered) == 0:
 				#print 'No posts of type: ' + s
 				continue
@@ -191,13 +193,13 @@ class HomeProcessor(Processor):
 			#print '--- %s per hour' % str(len(home_filtered)/dur_seconds*3600*24)
 
 			#print 'top:'
-			top = self.__getTopPosts(home_filtered, 3)
+			top = ap(home_filtered).getTopPosts(3)
 			v['type'][s] = {'count' : len(home_filtered), 'top' : top} 
 			
 		#
 		# BY FRIEND
 		#
-		home_uid = self.__groupByUid(home_friends)
+		home_uid = ap(home_friends).groupByUid()
 		v['friend'] = {'active': [], 'liked':[], 'ratio':[]}
 
 		#print '\nMOST ACTIVE FRIENDS'
@@ -208,7 +210,7 @@ class HomeProcessor(Processor):
 			obj['name'] = home_uid[-i]['posts'][0]['from']['name']
 			#print obj['name']
 			for s in ['photo', 'link', 'status', 'checkin']:
-				obj[s+'_count'] = len(self.__getByKeyValue(home_uid[-i]['posts'], 'type', s))
+				obj[s+'_count'] = len(ap(home_uid[-i]['posts']).getByKeyValue('type', s))
 				#print ' %s: %i,' % (s, obj[s+'_count']),
 			obj['total_count'] = home_uid[-i]['count']
 			#print 'total: %i' % obj['total_count']
@@ -259,16 +261,16 @@ class HomeProcessor(Processor):
 		#
 		#most liked
 		#
-		feed_all = sorted(feed_all, key=lambda(i): self.__fieldCount(i))
+		feed_all = sorted(feed_all, key=lambda(i): self._fieldCount(i))
 		#print '\nMOST LIKED:'
-		v['most_liked'] = self.__getTopPosts(feed_all, 5)
+		v['most_liked'] = ap(feed_all).getTopPosts(5)
 
 		#
 		# Comments 
 		#
-		feed_all = sorted(feed_all, key=lambda(i): self.__fieldCount(i, 'comments'))
+		feed_all = sorted(feed_all, key=lambda(i): self._fieldCount(i, 'comments'))
 		#print '\nMOST COMMENTS:'
-		v['most_comments'] = self.__getTopPosts(feed_all, 3)
+		v['most_comments'] = ap(feed_all).getTopPosts(3)
 
 		#
 		# RATE
@@ -307,20 +309,20 @@ class HomeProcessor(Processor):
 		for s in ['photo', 'link', 'status', 'checkin']:
 			#print s.upper()
 			
-			feed_filtered = self.__getByKeyValue(feed_all, 'type', s)
-			feed_filtered = sorted(feed_filtered, key=lambda(i): self.__fieldCount(i))
+			feed_filtered = ap(feed_all).getByKeyValue('type', s)
+			feed_filtered = sorted(feed_filtered, key=lambda(i): self._fieldCount(i))
 
 			#print 'total of type %s: %i' % (s, len(feed_filtered))
 			#print '--- %s per hour' % str(len(feed_filtered)/dur_seconds*3600*24)
 
 			#print 'top:'
-			top = self.__getTopPosts(feed_filtered, 3)
+			top = ap(feed_filtered).getTopPosts(3)
 			v['type'][s] = {'count' : len(feed_filtered), 'top' : top} 
 			
 		#
 		# BY FRIEND
 		#
-		feed_uid = self.__groupByUid(feed_all)
+		feed_uid = ap(feed_all).groupByUid()
 		
 		v['friend'] = {'active': [], 'liked':[], 'ratio':[]}
 		
@@ -333,7 +335,7 @@ class HomeProcessor(Processor):
 			#print obj['name'] 
 			
 			for s in ['photo', 'link', 'status', 'checkin']:
-				obj[s+'_count'] =  len(self.__getByKeyValue(feed_uid[-i]['posts'], 'type', s))
+				obj[s+'_count'] =  len(ap(feed_uid[-i]['posts']).getByKeyValue('type', s))
 				#print ' %s: %i,' % (s, obj[s+'_count']),
 			
 			obj['total_count'] = feed_uid[-i]['count']

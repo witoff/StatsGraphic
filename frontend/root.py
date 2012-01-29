@@ -4,13 +4,23 @@ from HomeProcessor import *
 
 urls = (
   '/', 'index',
+  '/superbowl', 'superbowl',
   '/api/home', 'home',
   '/api/home?', 'home'
 )
 
 app = web.application(urls, globals())
-
 class index (object):
+	def GET(self):
+		f = file('static/index.htm', 'r')
+		s = f.read()
+		f.close()
+		return s
+
+	def POST(self):
+		return self.GET()
+
+class superbowl (object):
 	def GET(self):
 		f = file('static/superbowl.htm', 'r')
 		s = f.read()
