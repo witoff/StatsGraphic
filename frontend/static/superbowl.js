@@ -19,16 +19,18 @@ var patriotPosts = [];
 var giantPosts = [];
 var allPosts = [];
 
-function processHome(){
+function processFeed(data){
     console.trace('processing home');
+    alert('data rx');
 
-    FB.api('/me/home',
+
+    /*FB.api('/me/home',
         {
             //'since':'last week',
             'limit': '500'
         },
         processFeedResponse
-    );
+    );*/
 
 }
 
@@ -63,10 +65,3 @@ function searchAndAddByMessage(feed, arr, s)
       }
     });
 }
-
-function processFeed(fbdata) {
-    FB.api('/me', function(response) {
-        //alert('Your name is ' + response.name);
-    });
-    processHome();
-};

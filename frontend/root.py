@@ -1,12 +1,16 @@
 
 import web
 from HomeProcessor import *
+from superbowl import *
 
 urls = (
   '/', 'index',
   '/superbowl', 'superbowl',
-  '/api/home', 'home',
-  '/api/home?', 'home'
+  '/superbowl/', 'superbowl',
+  '/api/home', 'apiHome',
+  '/api/home?', 'apiHome',
+  #'/api/superbowl', 'apiSuperbowl',
+  '/api/superbowl?', 'apiSuperbowl'
 )
 
 app = web.application(urls, globals())
@@ -30,12 +34,18 @@ class superbowl (object):
 	def POST(self):
 		return self.GET()
 
-class home(object):
+class apiHome(object):
     def GET(self):
 		p = HomeProcessor(web.input('token').token)
 		s = p.getProcessed()
-		#s = s.replace('\n','')
 		return s
+
+class apiSuperbowl(object):
+    def GET(self):
+		p = Superbowl(web.input('token').token)
+		s = p.getProcessed()
+		return s
+
 
 
 if __name__ == "__main__":

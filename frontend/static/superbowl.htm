@@ -50,12 +50,17 @@
             if (response.status === 'connected') {
                 //user is already logged in and connected
                 $('#loader').show();
-                processFeed();
+                $.getJSON('/api/superbowl?token=' + response.authResponse.accessToken, function (data) {
+                    processFeed(data);
+                    $('#loader').hide();
+                });
             } else {
+                //button.innerHTML="<img src=\"http://who.deleted.me/res/login-button.png\" />";
                 //user is not connected to your app or logged out
                 $('#user-info').innerHTML('user is not connected of is logged out');
             }
         }
+
 
         // run once with current status and whenever the status changes
         FB.getLoginStatus(update);

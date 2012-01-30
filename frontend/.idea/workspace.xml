@@ -22,10 +22,10 @@
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="superbowl.js" pinned="false" current="true" current-in-tab="true">
+            <file leaf-file-name="superbowl.js" pinned="false" current="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/static/superbowl.js">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state line="27" column="25" selection-start="494" selection-end="494" vertical-scroll-proportion="0.108723134">
+                  <state line="22" column="37" selection-start="403" selection-end="403" vertical-scroll-proportion="0.20967741">
                     <folding />
                   </state>
                 </provider>
@@ -41,10 +41,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="superbowl.htm" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="superbowl.htm" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/superbowl.htm">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="30" selection-start="367" selection-end="367" vertical-scroll-proportion="-4.375">
+            <state line="52" column="28" selection-start="1902" selection-end="1902" vertical-scroll-proportion="0.5529132">
               <folding />
             </state>
           </provider>
@@ -68,10 +68,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.htm" pinned="false" current="false" current-in-tab="true">
+      <file leaf-file-name="index.htm" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/index.htm">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="20" selection-start="1701" selection-end="1701" vertical-scroll-proportion="0.8394768">
+            <state line="49" column="0" selection-start="1641" selection-end="2255" vertical-scroll-proportion="-25.041666">
               <folding />
             </state>
           </provider>
@@ -100,14 +100,14 @@
         <option value="$PROJECT_DIR$/index.htm" />
         <option value="$PROJECT_DIR$/pspct.js" />
         <option value="$PROJECT_DIR$/static/data/home.js" />
-        <option value="$PROJECT_DIR$/static/superbowl.htm" />
         <option value="$PROJECT_DIR$/static/superbowl.js" />
+        <option value="$PROJECT_DIR$/static/superbowl.htm" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
-    <option name="width" value="840" />
+    <option name="width" value="1189" />
     <option name="height" value="1024" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -237,13 +237,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="840" height="1024" extended-state="0" />
+    <frame x="0" y="22" width="1189" height="1024" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29620564" sideWeight="0.9569061" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20754717" sideWeight="0.9569061" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -313,14 +313,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/static/superbowl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="25" selection-start="494" selection-end="494" vertical-scroll-proportion="0.108723134">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/superbowl.htm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="30" selection-start="367" selection-end="367" vertical-scroll-proportion="-4.375">
+        <state line="22" column="37" selection-start="403" selection-end="403" vertical-scroll-proportion="0.20967741">
           <folding />
         </state>
       </provider>
@@ -341,7 +334,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/index.htm">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="20" selection-start="1701" selection-end="1701" vertical-scroll-proportion="0.8394768">
+        <state line="49" column="0" selection-start="1641" selection-end="2255" vertical-scroll-proportion="-25.041666">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/superbowl.htm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="28" selection-start="1902" selection-end="1902" vertical-scroll-proportion="0.5529132">
           <folding />
         </state>
       </provider>
