@@ -54,8 +54,8 @@ class Superbowl(Processor):
 		fields = ['message', 'link', 'name', 'caption', 'description']
 		
 		pr_posts = ap(posts)
-		giant_posts = pr_posts.searchPosts(fields, giant_keywords)
-		pat_posts = pr_posts.searchPosts(fields, pat_keywords)
+		giant_posts = pr_posts.searchPosts(fields, giant_keywords, True)
+		pat_posts = pr_posts.searchPosts(fields, pat_keywords, True)
 
 		pr_photos = ap(photos)
 		giant_photos = pr_photos.searchPosts(fields, giant_keywords)

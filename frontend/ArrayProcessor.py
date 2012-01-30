@@ -81,13 +81,18 @@ class ArrayProcessor(object):
 				ret_arr.append(e)
 		return ret_arr
 
-	def searchPosts(self, fields, keywords):
+	def searchPosts(self, fields, keywords, searchComments=False):
 		ret = []
 		for post in self.arr:
 			search = ""
 			for f in fields:
 				if f in post:
 					search +=  post[f].lower()
+
+			if searchComments:
+				if 'comments' in post and 'data' in post['comments']:
+					for c in post['comments']['data']:
+						search += c['message']
 
 			for k in keywords:
 				if k in search:
