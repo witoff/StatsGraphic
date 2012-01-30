@@ -33,10 +33,28 @@ class ArrayProcessor(object):
 		}, 
 		...]
 	"""
-	def groupByUid(self):
+	def groupByUid(self, return_posts=True):
 		post_arr = sorted(self.arr, key=lambda(i): i['from']['id'])
-		home_uid = []
+		posts_uid = []
 		temp = []
+
+		def getReturnObj(posts):
+			ret_dict = {}
+			ret_dict['id'] = posts[0]['from']['id']
+			ret_dict['count'] = len(posts)
+			ret_dict['name'] = posts[0]['from']['name']
+			
+			if return_posts:
+				ret_dict['posts'] = posts
+			
+			likes = 0
+			for p in posts:
+				if 'likes' in p:
+					likes += p['likes']['count']
+			ret_dict['likes'] = likes
+
+			return ret_dict
+			
 
 		for f in post_arr:
 			if not len(temp):
@@ -44,29 +62,36 @@ class ArrayProcessor(object):
 			elif f['from']['id'] == temp[0]['from']['id']:
 				temp.append(f)
 			else:
-				home_uid.append({'id': temp[0]['from']['id'],
-					'posts': temp, 
-					'count' : len(temp)})
+				posts_uid.append(getReturnObj(temp))
 				temp = [f]
-		home_uid.append({'id': temp[0]['from']['id'], 
-							'posts': temp, 
-							'count' : len(temp)})
-		home_uid = sorted(home_uid, key=lambda(i): i['count'])
+		posts_uid.append(getReturnObj(temp))
+
+		posts_uid = sorted(posts_uid, key=lambda(i): i['count'])
 	
 		#add a field for likes count
-		for u in home_uid:
-			likes = 0
-			for e in u['posts']:
-				if 'likes' in e:
-					likes += e['likes']['count']
-			u['likes'] = likes
+		return posts_uid
 
-		return home_uid
-
-	def getByKeyValue(self, k, v):
+	def getByKeyValue(self, key, vals):
+		if not isinstance(vals, list):
+			vals = [vals]
+		
 		ret_arr = []
 		for e in self.arr:
-			if e[k] == v:
+			if e[key] in vals:
 				ret_arr.append(e)
 		return ret_arr
+
+	def searchPosts(self, fields, keywords):
+		ret = []
+		for post in self.arr:
+			search = ""
+			for f in fields:
+				if f in post:
+					search +=  post[f].lower()
+
+			for k in keywords:
+				if k in search:
+					ret.append(post)
+					break
+		return ret
 

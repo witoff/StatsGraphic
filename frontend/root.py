@@ -4,17 +4,17 @@ from HomeProcessor import *
 from superbowl import *
 
 urls = (
-  '/', 'index',
-  '/superbowl', 'superbowl',
-  '/superbowl/', 'superbowl',
-  '/api/home', 'apiHome',
-  '/api/home?', 'apiHome',
+  '/', 'epIndex',
+  '/superbowl', 'epSuperbowl',
+  '/superbowl/', 'epSuperbowl',
+  '/api/home', 'epApiHome',
+  '/api/home?', 'epApiHome',
   #'/api/superbowl', 'apiSuperbowl',
-  '/api/superbowl?', 'apiSuperbowl'
+  '/api/superbowl?', 'epApiSuperbowl'
 )
 
 app = web.application(urls, globals())
-class index (object):
+class epIndex (object):
 	def GET(self):
 		f = file('static/index.htm', 'r')
 		s = f.read()
@@ -24,7 +24,7 @@ class index (object):
 	def POST(self):
 		return self.GET()
 
-class superbowl (object):
+class epSuperbowl (object):
 	def GET(self):
 		f = file('static/superbowl.htm', 'r')
 		s = f.read()
@@ -34,13 +34,13 @@ class superbowl (object):
 	def POST(self):
 		return self.GET()
 
-class apiHome(object):
+class epApiHome(object):
     def GET(self):
 		p = HomeProcessor(web.input('token').token)
 		s = p.getProcessed()
 		return s
 
-class apiSuperbowl(object):
+class epApiSuperbowl(object):
     def GET(self):
 		p = Superbowl(web.input('token').token)
 		s = p.getProcessed()
