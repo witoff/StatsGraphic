@@ -65,16 +65,21 @@ class Superbowl(Processor):
 		giant_users = ap(giant_posts + giant_photos).groupByUid(False)
 		pat_users = ap(pat_posts + pat_photos).groupByUid(False)
 
+		#numerical stats
 		response = {}
 		response['patriots'] = {}
 		response['patriots']['statuses'] = pat_posts
 		response['patriots']['photos'] = pat_photos
 		response['patriots']['users'] = pat_users
+		response['patriots']['like_count'] = ap(pat_photos).countLikes() + ap(pat_posts).countLikes()
+		response['patriots']['comment_count'] = ap(pat_photos).countComments() + ap(pat_posts).countComments()
 
 		response['giants'] = {}
 		response['giants']['posts'] = giant_posts
 		response['giants']['photos'] = giant_photos
 		response['giants']['users'] = giant_users
+		response['giants']['like_count'] = ap(giant_photos).countLikes() + ap(giant_posts).countLikes()
+		response['giants']['comment_count'] = ap(giant_photos).countComments() + ap(giant_posts).countComments()
 		
 		response['friends'] = {'count': 0}
 
@@ -88,3 +93,5 @@ class Superbowl(Processor):
 
 
 		return json.dumps(response)
+
+

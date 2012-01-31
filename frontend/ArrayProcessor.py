@@ -100,3 +100,23 @@ class ArrayProcessor(object):
 					break
 		return ret
 
+	def countLikes(self):
+		count = 0
+		for p in self.arr:
+			if 'likes' in p:
+				count += p['likes']['count']
+			if 'comments' in p and 'data' in p['comments']:
+				for c in p['comments']['data']:
+					if 'likes' in c:
+						count += c['likes']
+		return count
+
+
+	def countComments(self):
+		count = 0
+		for p in self.arr:
+			if 'comments' in p:
+				count += p['comments']['count']
+		return count
+
+
