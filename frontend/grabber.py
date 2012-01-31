@@ -17,6 +17,9 @@ class Grabber(object):
 		api_url = 'https://graph.facebook.com/%s?access_token=%s&' + getstring
 		
 		return api_url % (endpoint, self.token)
+		
+	def getToken(self):
+		return self.token
 	
 	def getUser(self):
 		if self.user:

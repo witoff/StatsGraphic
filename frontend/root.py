@@ -2,6 +2,7 @@
 import web
 from HomeProcessor import *
 from superbowl import *
+from pymongo import Connection
 
 urls = (
   '/', 'epIndex',
@@ -12,7 +13,7 @@ urls = (
   #'/api/superbowl', 'apiSuperbowl',
   '/api/superbowl?', 'epApiSuperbowl'
 )
-
+db = Connection().pspct
 app = web.application(urls, globals())
 class epIndex (object):
 	def GET(self):
@@ -36,13 +37,14 @@ class epSuperbowl (object):
 
 class epApiHome(object):
     def GET(self):
-		p = HomeProcessor(web.input('token').token)
+		p = HomeProcessor(db, web.input('token').token)
 		s = p.getProcessed()
+
 		return s
 
 class epApiSuperbowl(object):
     def GET(self):
-		p = Superbowl(web.input('token').token)
+		p = Superbowl(db, web.input('token').token)
 		s = p.getProcessed()
 		return s
 

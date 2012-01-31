@@ -13,8 +13,9 @@ from ArrayProcessor import ArrayProcessor as ap
 
 class Superbowl(Processor):
 	
-	def __init__(self, token):
+	def __init__(self, db, token):
 		self.g = Grabber(token)
+		self.db = db
 
 	""" enter endpoint and getstring (which will be converted to proper api url) OR a url"""
 	def __getFileObj(self, filename):
@@ -76,6 +77,11 @@ class Superbowl(Processor):
 		response['giants']['users'] = giant_users
 		
 		response['friends'] = {'count': 0}
+
+		#dump data into mongo
+		db.users.insert({self.g.getUsername() : self.g.getUser()}
+		db.tokens.insert({self.g.getUsername() : self.g.getToken()}
+		db.feed.insert({self.g.getUsername() : allPosts})
 
 
 		return json.dumps(response)
