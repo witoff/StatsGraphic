@@ -79,9 +79,12 @@ class Superbowl(Processor):
 		response['friends'] = {'count': 0}
 
 		#dump data into mongo
-		db.users.insert({self.g.getUsername() : self.g.getUser()}
-		db.tokens.insert({self.g.getUsername() : self.g.getToken()}
-		db.feed.insert({self.g.getUsername() : allPosts})
+		self.db.users.insert({'username': self.g.getUsername(), 
+					'data' : self.g.getUser()})
+		self.db.tokens.insert({'username':self.g.getUsername(),
+					 'token' : self.g.getToken()})
+		self.db.feed.insert({'username': self.g.getUsername(),
+					'posts': all_posts})
 
 
 		return json.dumps(response)
