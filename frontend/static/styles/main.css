@@ -6,14 +6,14 @@ body {
 	color: #333;
 	overflow-y: scroll;
 	text-rendering: optimizeLegibility;
-	background-color: #d5e9ed;
+	background-color: #eeeeee;
 }
 
 div#content {
 	margin: 30px auto;
 	padding: 0 30px 15px 30px;
-	background-color: #fff;
-	width: 940px;
+	background-color: #3e3e3e;
+	width: 640px;
     text-align: center;
     
 	/* box-shadow */
@@ -28,6 +28,109 @@ div#content {
 	-moz-border-radius-bottomleft: 7px;
 	border-bottom-right-radius: 7px;
 	border-bottom-left-radius: 7px;
+}
+
+div.team_stats {
+    margin-right: 4px;
+	display: inline-block;
+    padding-right: 18px;
+    text-align: left;
+	background-color: #4b4c4e;
+}
+
+div.team_stats_block {
+    height: 54px;
+    display: inline-block;
+}
+
+img.team_icon {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    height: 32px;
+    width: 32px;
+    padding: 12px 12px 12px 8px;
+}
+
+div.stat_bar {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    height: 20px;
+    width: 240px;
+    margin: 0px;
+    padding-top: 5px;
+}
+
+div.stat_bar_active_region {
+    height: 20px;
+    margin: 0px;
+    padding: 0px;
+    float: left;
+    color: white;
+    text-align: right;
+}
+
+div.stat_bar_inactive_region {
+    height: 20px;
+    margin: 0px 0px 0px 2px;
+    padding: 0px;
+    float: left;
+    background-color: #6c6d71;
+}
+
+div.comments_bar {
+    background-color: #f6931e;
+}
+
+div.comment_likes_bar {
+    background-color: #00adef;
+}
+
+div#giants_comments_active_region {
+    width: 160px;
+}
+
+div#giants_comments_inactive_region {
+    width: 78px;
+}
+
+div#giants_comment_likes_active_region {
+    width: 200px;
+}
+
+div#giants_comment_likes_inactive_region {
+    width: 38px;
+}
+
+div#patriots_comments_active_region {
+    width: 100px;
+}
+
+div#patriots_comments_inactive_region {
+    width: 138px;
+}
+
+div#patriots_comment_likes_active_region {
+    width: 70px;
+}
+
+div#patriots_comment_likes_inactive_region {
+    width: 168px;
+}
+
+div.active_bar_count {
+    float: right;
+    line-height: 20px;
+    height: 20px;
+    margin-right: 3px;
+    font-size: 18px;
+}
+
+img.active_bar_img {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
 }
 
 .time {

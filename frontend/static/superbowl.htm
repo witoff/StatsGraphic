@@ -4,7 +4,6 @@
 <head>
     <title>Pspct</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
-    <script src="/static/data/home.js" type="text/javascript"></script>
     <script src="/static/superbowl.js" type="text/javascript"></script>
     <link  href="/static/styles/main.css" rel="stylesheet">
     <script type="text/javascript">
@@ -25,13 +24,60 @@
 <div id="fb-root"></div>
 
 <div id="user-info"></div>
+
 <div id="content">
-    <div id="loader" style="display: none;"> <img  src="/static/ajax-loader.gif" /> </div>
     <div id="date"> </div>
-    <div id="giants"> </div>
-    <div id="patriots"> </div>
     <div id="stats"> </div>
 
+    <br />
+    
+    <div>
+        <div id="giants_stats" class="team_stats">
+            <div class="team_stats_block">
+                <img class="team_icon" src="/static/images/giants_icon.jpg" />
+            </div>
+            <div class="team_stats_block">
+                <div id="giants_comments_bar" class="stat_bar">
+                    <div id="giants_comments_active_region" class="comments_bar stat_bar_active_region">
+                        <img src="/static/images/comments_bar_icon.png" class="active_bar_img" />
+                        <div id="giants_comment_count" class="active_bar_count">45</div>
+                    </div>
+                    <div id="giants_comments_inactive_region" class="stat_bar_inactive_region"></div>
+                </div>
+                <div id="giants_comment_likes_bar" class="stat_bar">
+                    <div id="giants_comment_likes_active_region" class="comment_likes_bar stat_bar_active_region">
+                        <img src="/static/images/comment_like_bar_icon.png" class="active_bar_img" />
+                        <div id="giants_comment_like_count" class="active_bar_count">71</div>
+                    </div>
+                    <div id="giants_comment_likes_inactive_region" class="stat_bar_inactive_region"></div>
+                </div>
+            </div>
+        </div>
+        <div id="patriots_stats" class="team_stats">
+            <div class="team_stats_block">
+                <img class="team_icon" src="/static/images/patriots_icon.jpg" />
+            </div>
+            <div class="team_stats_block">
+                <div id="patriots_comments_bar" class="stat_bar">
+                    <div id="patriots_comments_active_region" class="comments_bar stat_bar_active_region">
+                        <img src="/static/images/comments_bar_icon.png" class="active_bar_img" />
+                        <div id="patriots_comment_count" class="active_bar_count">35</div>
+                    </div>
+                    <div id="patriots_comments_inactive_region" class="stat_bar_inactive_region"></div>
+                </div>
+                <div id="patriots_comment_likes_bar" class="stat_bar">
+                    <div id="patriots_comment_likes_active_region" class="comment_likes_bar stat_bar_active_region">
+                        <img src="/static/images/comment_like_bar_icon.png" class="active_bar_img" />
+                        <div id="patriots_comment_like_count" class="active_bar_count">19</div>
+                    </div>
+                    <div id="patriots_comment_likes_inactive_region" class="stat_bar_inactive_region"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    
     <a id="login-btn"></a>
     <div class="fb-login-button" show-faces="true" scope="email,user_checkins,read_stream,offline_access,publish_stream">
         Login with Facebook
@@ -57,10 +103,9 @@
             } else {
                 //button.innerHTML="<img src=\"http://who.deleted.me/res/login-button.png\" />";
                 //user is not connected to your app or logged out
-                $('#user-info').innerHTML('user is not connected of is logged out');
+                $('#user-info').innerHTML('User is not connected or is logged out');
             }
         }
-
 
         // run once with current status and whenever the status changes
         FB.getLoginStatus(update);
