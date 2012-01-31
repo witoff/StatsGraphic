@@ -12,8 +12,9 @@ from ArrayProcessor import ArrayProcessor as ap
 
 class HomeProcessor(Processor):
 	
-	def __init__(self, token):
+	def __init__(self, db, token):
 		Processor.__init__(self, token)
+		self.db = db
 	
 	def getProcessed(self):
 		response = {}	

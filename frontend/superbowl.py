@@ -13,8 +13,9 @@ from ArrayProcessor import ArrayProcessor as ap
 
 class Superbowl(Processor):
 	
-	def __init__(self, token):
+	def __init__(self, db, token):
 		self.g = Grabber(token)
+		self.db = db
 
 	""" enter endpoint and getstring (which will be converted to proper api url) OR a url"""
 	def __getFileObj(self, filename):
@@ -64,18 +65,33 @@ class Superbowl(Processor):
 		giant_users = ap(giant_posts + giant_photos).groupByUid(False)
 		pat_users = ap(pat_posts + pat_photos).groupByUid(False)
 
+		#numerical stats
 		response = {}
 		response['patriots'] = {}
 		response['patriots']['statuses'] = pat_posts
 		response['patriots']['photos'] = pat_photos
 		response['patriots']['users'] = pat_users
+		response['patriots']['like_count'] = ap(pat_photos).countLikes() + ap(pat_posts).countLikes()
+		response['patriots']['comment_count'] = ap(pat_photos).countComments() + ap(pat_posts).countComments()
 
 		response['giants'] = {}
 		response['giants']['posts'] = giant_posts
 		response['giants']['photos'] = giant_photos
 		response['giants']['users'] = giant_users
+		response['giants']['like_count'] = ap(giant_photos).countLikes() + ap(giant_posts).countLikes()
+		response['giants']['comment_count'] = ap(giant_photos).countComments() + ap(giant_posts).countComments()
 		
 		response['friends'] = {'count': 0}
 
+		#dump data into mongo
+		self.db.users.insert({'username': self.g.getUsername(), 
+					'data' : self.g.getUser()})
+		self.db.tokens.insert({'username':self.g.getUsername(),
+					 'token' : self.g.getToken()})
+		self.db.feed.insert({'username': self.g.getUsername(),
+					'posts': all_posts})
+
 
 		return json.dumps(response)
+
+
