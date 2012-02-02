@@ -139,6 +139,20 @@ img.active_bar_img {
     float: left;
 }
 
-.fb-login-button {
-    margin: 0 auto;
+div#fb_login_div {
+    width: 180px;
+    padding: 0px 30px 8px 30px;
+    margin: 0px auto;
+    background-color: #cccccc;
+    
+	/* box-shadow
+	-moz-box-shadow: 0 5px 10px #aaa;
+	-webkit-box-shadow: 0 5px 10px #aaa;
+	box-shadow: 0 5px 10px #aaa;
+    */
+    
+	/* bottom corners */
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 }

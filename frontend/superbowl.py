@@ -30,7 +30,7 @@ class Superbowl(Processor):
 		all_posts = self.g.getHome()
 
 		# key terms
-		pat_keywords = [' pats', ' patriots', ' new england', ' ne ', ' ne.', ' ne!', ' ne?']
+		pat_keywords = [' pats', ' patriots', ' new england']
 		# stars
 		pat_keywords.extend(['brady', 'gronkowski', 'ochocinco', ' welker', 'belichick'])
 		#all active players

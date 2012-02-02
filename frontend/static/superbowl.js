@@ -1,4 +1,4 @@
-
+//------------------------------------------------------------------------------
 function newFilledArray(len, val) {
     var rv = new Array(len);
     while (--len >= 0) {
@@ -7,6 +7,7 @@ function newFilledArray(len, val) {
     return rv;
 }
 
+//------------------------------------------------------------------------------
 function newIncreasingArray(len) {
     var rv = new Array(len);
     while (--len >= 0) {
@@ -19,6 +20,12 @@ var patriotPosts = [];
 var giantPosts = [];
 var allPosts = [];
 
+var patsLikeCount      = 0;
+var patsCommentCount   = 0;
+var giantsLikeCount    = 0;
+var giantsCommentCount = 0;
+
+//------------------------------------------------------------------------------
 function processFeed(data){
     console.trace('processing home');
     alert('data rx');
@@ -34,6 +41,12 @@ function processFeed(data){
 
 }
 
+//------------------------------------------------------------------------------
+function udpateTeamStatsView() {
+
+}
+
+//------------------------------------------------------------------------------
 function processFeedResponse(response)
 {
     //alert('data received!');
@@ -48,15 +61,22 @@ function processFeedResponse(response)
     else
     {
         allPosts = allPosts.concat(response.data);
-        searchAndAddByMessage(response.data, patriotPosts, 'atriots');
-        searchAndAddByMessage(response.data, giantPosts, 'giant');
-        //alert(response.paging.next.slice(27));
+        
+        patsLikeCount      += allPosts['patriots']['like_count'];
+        patsCommentCount   += allPosts['patriots']['comment_count'];
+        giantsLikeCount    += allPosts['giants']['like_count'];
+        giantsCommentCount += allPosts['giants']['comment_count'];
+        
+        udpateTeamStatsView();
+        
+        // searchAndAddByMessage(response.data, patriotPosts, 'atriots');
+        // searchAndAddByMessage(response.data, giantPosts, 'giant');
+        // alert(response.paging.next.slice(27));
         FB.api(response.paging.next.slice(27), processFeedResponse);
     }
 }
 
-
-
+//------------------------------------------------------------------------------
 function searchAndAddByMessage(feed, arr, s)
 {
     $(feed).each(function(){

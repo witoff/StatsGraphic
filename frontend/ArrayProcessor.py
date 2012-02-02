@@ -40,6 +40,7 @@ class ArrayProcessor(object):
 
 		def getReturnObj(posts):
 			ret_dict = {}
+			
 			ret_dict['id'] = posts[0]['from']['id']
 			ret_dict['count'] = len(posts)
 			ret_dict['name'] = posts[0]['from']['name']
