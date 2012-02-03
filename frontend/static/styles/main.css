@@ -88,35 +88,35 @@ div.comment_likes_bar {
 }
 
 div#giants_comments_active_region {
-    width: 160px;
+    width: 48px;
 }
 
 div#giants_comments_inactive_region {
-    width: 78px;
+    width: 190px;
 }
 
 div#giants_comment_likes_active_region {
-    width: 200px;
+    width: 48px;
 }
 
 div#giants_comment_likes_inactive_region {
-    width: 38px;
+    width: 190px;
 }
 
 div#patriots_comments_active_region {
-    width: 100px;
+    width: 48px;
 }
 
 div#patriots_comments_inactive_region {
-    width: 138px;
+    width: 190px;
 }
 
 div#patriots_comment_likes_active_region {
-    width: 70px;
+    width: 48px;
 }
 
 div#patriots_comment_likes_inactive_region {
-    width: 168px;
+    width: 190px;
 }
 
 div.active_bar_count {
@@ -127,10 +127,11 @@ div.active_bar_count {
     font-size: 18px;
 }
 
-img.active_bar_img {
+img.stats_bar_img {
     display: inline-block;
     width: 18px;
     height: 18px;
+    margin-right: 2px;
 }
 
 .time {
@@ -155,4 +156,26 @@ div#fb_login_div {
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
+}
+
+div#top
+{
+    height: 60px;
+    padding: 10px 0px 0px 0px;
+    color: white;
+}
+
+.countdown {
+    background-color: #555555;
+    border: 1px solid white;
+    border-radius: 5px 5px 5px 5px;
+    float: right;
+    font-size: 10px;
+    padding: 3px;
+}
+
+.logo {
+    float: left;
+    font-size: 18px;
+    text-align: left;
 }
