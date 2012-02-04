@@ -100,17 +100,36 @@ function addComments(data)
 		appendCommentString(value, '#giant_comments');
 		
 	});
-	console.log(1);
 	$.each(data.patriots.statuses, function(i, value){
 		appendCommentString(value, '#patriot_comments');		
 	});
-	console.log(2);
 
 }
 
 function appendCommentString(value, toDiv)
 {
-	console.log('a');
+	var message = value.message;
+	if (message)
+	{
+		var links = message.match(/http\S*/g)
+		if (links)
+		{
+			for (i in links)
+			{
+				message = message.replace(links[i], '<a href="' + links[i] + '">[Link]</a>');
+			}
+		}
+	}
+	else if (value.picture)
+	{
+		message = '<img src="' + value.picture + '" alt="picture" />';
+
+		if (value.link)
+			message = '<a href="' + value.link+ '">' + message + '</a>';
+		if (value.description)
+			message = message + value.description;
+
+	}
 	var s = [];
 	s.push('<div class="comment">');
 	s.push('<div class="rank"></div>');
@@ -118,14 +137,12 @@ function appendCommentString(value, toDiv)
 	s.push('<div class="text"><strong class="name">');
 	s.push(value.from.name);
 	s.push('</strong><br /><span class="message">');
-	s.push(value.message);
+	s.push(message);
 	s.push('</span></div>');
-	s.push('<div class="add_comment"></div>');
+	s.push('<div class="add_comment"><a href="http://facebook.com/'+ value.from.id +'"><img alt="add_comment" src="/static/images/view.png" /></a></div>');
 	s.push('</div>');
 
-	console.log('b');
 	$(toDiv).append(s.join(''));
-	console.log('c');
 
 }
 

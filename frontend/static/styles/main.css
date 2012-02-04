@@ -202,7 +202,7 @@ div#grass {
 	margin-top:6px;
 	float:left;
 	margin-left:2px;
-	
+	padding: 5px;
 }
 .comment div {
 	float:left;
