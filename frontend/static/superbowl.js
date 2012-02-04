@@ -1,3 +1,36 @@
+$(document).ready(function(){
+	console.log('document ready');
+	if (doTest())
+	{
+		console.log('running the test');
+		$.getJSON('static/test.json', processFeed);
+	}
+
+});
+
+function doTest(){
+	if (window.location.hash == "#test")
+		return true;
+	else
+		return false;
+}
+
+function runFacebookRequest(response) {
+	if (doTest())
+		return;
+	if (response.status === 'connected') {
+		//user is already logged in and connected
+		$('#loader').show();
+		$.getJSON('/api/superbowl?token=' + response.authResponse.accessToken, function (data) {
+			processFeed(data);
+			$('#loader').hide();
+		});
+	} else {
+		//button.innerHTML="<img src=\"http://who.deleted.me/res/login-button.png\" />";
+		//user is not connected to your app or logged out
+		$('#user-info').innerHTML('User is not connected or is logged out');
+	}
+}
 //------------------------------------------------------------------------------
 function newFilledArray(len, val) {
     var rv = new Array(len);
@@ -26,14 +59,12 @@ var giantsLikeCount    = 0;
 var giantsCommentCount = 0;
 
 //------------------------------------------------------------------------------
-function processFeed(data)
-{
-    console.trace('Received fb feed. Processing... ');
+function processFeed(data){
+
+    console.log('Received fb feed. Processing... ');
     
-    //alert('data received!');
-    //alert(JSON.stringify(response));
     if (!data || data.length == 0) {
-        console.trace('Failed =(\n');
+        console.log('Failed =(\n');
     
         // Show Error dialog to user or something.
         alert("Error retrieving your Facebook feed. What have your friends been saying?...");
@@ -53,20 +84,13 @@ function processFeed(data)
         patsCommentCount   += data['patriots']['comment_count'];
         giantsLikeCount    += data['giants']['like_count'];
         giantsCommentCount += data['giants']['comment_count'];
+		console.log('check');
+
         udpateTeamStatsView();
-        console.trace('Success!\n');
+        console.log('Success!\n');
         // FB.api(response.paging.next.slice(27), processFeedResponse);
     }
 
-    /*
-    FB.api('/me/home',
-        {
-            //'since':'last week',
-            'limit': '500'
-        },
-        processFeedResponse
-    );
-    */
 }
 
 //------------------------------------------------------------------------------

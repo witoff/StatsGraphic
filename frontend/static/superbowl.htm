@@ -32,11 +32,12 @@
         </div>
         <div class="countdown">T-4 Days</div>
     </div>
+    <div id="grass"> </div>
     <div id="stats"> </div>
 
     <br />
     
-    <div>
+    <div id="overview">
         <div id="giants_stats" class="team_stats">
             <div class="team_stats_block">
                 <img class="team_icon" src="/static/images/giants_icon.jpg" />
@@ -83,12 +84,11 @@
 
     <br /> <br /> <br />
     
-    <div id="fb_login_div">
-        <a id="login-btn"></a>
+    <!--<div id="fb_login_div">-->
         <div class="fb-login-button" show-faces="true" scope="email,user_checkins,read_stream,offline_access,publish_stream">
             Login with Facebook
         </div>
-    </div>
+    <!--</div>-->
 </div>
 
 <script>
@@ -99,23 +99,10 @@
             xfbml: true,
             oauth: true});
 
-        function update(response) {
-            if (response.status === 'connected') {
-                //user is already logged in and connected
-                $('#loader').show();
-                $.getJSON('/api/superbowl?token=' + response.authResponse.accessToken, function (data) {
-                    processFeed(data);
-                    $('#loader').hide();
-                });
-            } else {
-                //button.innerHTML="<img src=\"http://who.deleted.me/res/login-button.png\" />";
-                //user is not connected to your app or logged out
-                $('#user-info').innerHTML('User is not connected or is logged out');
-            }
-        }
+        
 
         // run once with current status and whenever the status changes
-        FB.getLoginStatus(update);
+        FB.getLoginStatus(runFacebookRequest);
         //FB.Event.subscribe('auth.login', updateButton);
     };
 
