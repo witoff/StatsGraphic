@@ -182,38 +182,62 @@ div#top
 }
 
 div#grass {
-	background-image: url("/static/grass-main.png");
+	background-image: url("/static/images/grass-main.png");
 	height: 54px;
 	margin-left: -30px;
 	width: 700px;
 }
 .team_comments {
-	    display: inline-block;
-		margin-right: 4px;
-		padding-right: 18px;
-		text-align: left;
-		width: 296px;
+	float:left;
+	display: inline-block;
+	text-align: left;
+	width: 316px;
+	margin-right:4px;
 }
 
 .comment {
+	padding-right:11px;
 	background-color: #4b4c4e;
 	color: white;
 	margin-top:6px;
 	float:left;
+	margin-left:2px;
+	
 }
 .comment div {
 	float:left;
-	/*height:54px;/
+	/*height:54px;*/
 }
 .comment .rank {
 	width:20px;
 }
 .comment .image {
-	width:54px;
+	width:50px;
+	height:50px;
+	
 }
 .comment .text {
 	width:202px;
+	padding-left:10px;
 }
 .comment .add_comment{
 	width:20px;
+}
+.text .name {
+	
+}
+.text .message {
+
+}
+#color {
+	height:140px;
+	margin-top:15px;
+}
+#map {
+	background-color: #404141;
+	border-radius: 5px;
+	margin-top: 15px;
+	padding: 2px;
+
+
 }

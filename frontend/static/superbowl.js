@@ -114,12 +114,12 @@ function appendCommentString(value, toDiv)
 	var s = [];
 	s.push('<div class="comment">');
 	s.push('<div class="rank"></div>');
-	s.push('<div class="image"></div>');
-	s.push('<div class="text">');
+	s.push('<div class="image" style="background-image: url(\'http://graph.facebook.com/' + value.from.id + '/picture\');"></div>');
+	s.push('<div class="text"><strong class="name">');
 	s.push(value.from.name);
-	s.push('<br />');
+	s.push('</strong><br /><span class="message">');
 	s.push(value.message);
-	s.push('</div>');
+	s.push('</span></div>');
 	s.push('<div class="add_comment"></div>');
 	s.push('</div>');
 
