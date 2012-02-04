@@ -87,9 +87,45 @@ function processFeed(data){
 		console.log('check');
 
         udpateTeamStatsView();
+		addComments(data);
         console.log('Success!\n');
         // FB.api(response.paging.next.slice(27), processFeedResponse);
     }
+
+}
+
+function addComments(data)
+{
+	$.each(data.giants.posts, function(i, value){
+		appendCommentString(value, '#giant_comments');
+		
+	});
+	console.log(1);
+	$.each(data.patriots.statuses, function(i, value){
+		appendCommentString(value, '#patriot_comments');		
+	});
+	console.log(2);
+
+}
+
+function appendCommentString(value, toDiv)
+{
+	console.log('a');
+	var s = [];
+	s.push('<div class="comment">');
+	s.push('<div class="rank"></div>');
+	s.push('<div class="image"></div>');
+	s.push('<div class="text">');
+	s.push(value.from.name);
+	s.push('<br />');
+	s.push(value.message);
+	s.push('</div>');
+	s.push('<div class="add_comment"></div>');
+	s.push('</div>');
+
+	console.log('b');
+	$(toDiv).append(s.join(''));
+	console.log('c');
 
 }
 

@@ -22,10 +22,10 @@
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="main.css" pinned="false" current="true" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/static/styles/main.css">
+            <file leaf-file-name="superbowl.js" pinned="false" current="true" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/static/superbowl.js">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state line="137" column="18" selection-start="2346" selection-end="2346" vertical-scroll-proportion="0.3119266">
+                  <state line="33" column="0" selection-start="573" selection-end="573" vertical-scroll-proportion="0.44466403">
                     <folding />
                   </state>
                 </provider>
@@ -39,10 +39,10 @@
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="superbowl.js" pinned="false" current="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/static/superbowl.js">
+            <file leaf-file-name="main.css" pinned="false" current="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/static/styles/main.css">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state line="19" column="18" selection-start="335" selection-end="336" vertical-scroll-proportion="0.02964427">
+                  <state line="137" column="18" selection-start="2346" selection-end="2346" vertical-scroll-proportion="0.02964427">
                     <folding />
                   </state>
                 </provider>
@@ -61,7 +61,7 @@
       <file leaf-file-name="superbowl.htm" pinned="false" current="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/superbowl.htm">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="40" selection-start="1158" selection-end="1158" vertical-scroll-proportion="0.35714287">
+            <state line="32" column="40" selection-start="1158" selection-end="1158" vertical-scroll-proportion="0.023809524">
               <folding />
             </state>
           </provider>
@@ -210,8 +210,8 @@
     <property name="options.lastSelected" value="JavaScript.Libraries" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -330,6 +330,13 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/static/superbowl.htm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="40" selection-start="1158" selection-end="1158" vertical-scroll-proportion="0.023809524">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/data/home.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1045" column="46" selection-start="36025" selection-end="36025" vertical-scroll-proportion="0.0" />
@@ -337,35 +344,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/pspct.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="145" column="11" selection-start="4258" selection-end="4260" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="145" column="11" selection-start="4258" selection-end="4260" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/index.htm">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="0" selection-start="1641" selection-end="2255" vertical-scroll-proportion="0.0">
+        <state line="49" column="0" selection-start="1641" selection-end="2255" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/styles/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="137" column="18" selection-start="2346" selection-end="2346" vertical-scroll-proportion="0.02964427">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/superbowl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="18" selection-start="335" selection-end="336" vertical-scroll-proportion="0.02964427">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/styles/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="137" column="18" selection-start="2346" selection-end="2346" vertical-scroll-proportion="0.3119266">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/superbowl.htm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="40" selection-start="1158" selection-end="1158" vertical-scroll-proportion="0.35714287">
+        <state line="33" column="0" selection-start="573" selection-end="573" vertical-scroll-proportion="0.44466403">
           <folding />
         </state>
       </provider>

@@ -138,10 +138,9 @@ img.stats_bar_img {
 }
 
 div#fb_login_div {
-    width: 180px;
-    padding: 0px 30px 8px 30px;
-    margin: 0px auto;
-    background-color: #cccccc;
+	float:left;
+	left:50%;
+	position:relative;
     
 	/* box-shadow
 	-moz-box-shadow: 0 5px 10px #aaa;
@@ -154,14 +153,15 @@ div#fb_login_div {
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 }
-div.fb-login-btn {
-	width:180px;
-	height:100px
+div#fb_login_inner {
+	float:left;
+	position:relative;
+	left:-50%;
 }
 
 div#top
 {
-    height: 60px;
+    height: 35px;
     padding: 10px 0px 0px 0px;
     color: white;
 }
@@ -186,4 +186,34 @@ div#grass {
 	height: 54px;
 	margin-left: -30px;
 	width: 700px;
+}
+.team_comments {
+	    display: inline-block;
+		margin-right: 4px;
+		padding-right: 18px;
+		text-align: left;
+		width: 296px;
+}
+
+.comment {
+	background-color: #4b4c4e;
+	color: white;
+	margin-top:6px;
+	float:left;
+}
+.comment div {
+	float:left;
+	/*height:54px;/
+}
+.comment .rank {
+	width:20px;
+}
+.comment .image {
+	width:54px;
+}
+.comment .text {
+	width:202px;
+}
+.comment .add_comment{
+	width:20px;
 }
