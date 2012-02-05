@@ -60,9 +60,8 @@ var giantsCommentCount = 0;
 
 //------------------------------------------------------------------------------
 function processFeed(data){
-
     console.log('Received fb feed. Processing... ');
-    
+ 
     if (!data || data.length == 0) {
         console.log('Failed =(\n');
     
