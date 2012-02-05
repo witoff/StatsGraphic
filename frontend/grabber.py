@@ -31,11 +31,7 @@ class Grabber(object):
 		user = self.getUser()
 		if 'username' in user:
 			return user['username']
-
-		#This error showed up online... at least capture this in the log
-		print 'user not found: '
-		print user
-		return 'me'
+		return user['id']
 		
 	""" enter endpoint and getstring (which will be converted to proper api url) OR a url"""
 	def __getFbObj(self, endpoint='', getstring='', url=None):
