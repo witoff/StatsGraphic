@@ -122,7 +122,7 @@
 
         // run once with current status and whenever the status changes
         FB.getLoginStatus(runFacebookRequest);
-        //FB.Event.subscribe('auth.login', updateButton);
+        FB.Event.subscribe('auth.login', runFacebookRequest);
     };
 
     (function() {

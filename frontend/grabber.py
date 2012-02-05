@@ -79,7 +79,8 @@ class Grabber(object):
 
 			print 'oldest request was at: ' + str(start) + ' to: ' + str(stop)
 			print str(delta)
-		
+	
+		pprint(home_all)		
 		return home_all
 	
 	def getFriends(self):

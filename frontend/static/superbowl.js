@@ -26,11 +26,10 @@ function runFacebookRequest(response) {
 			$('#loader').hide();
 		});
 	} else {
-		//button.innerHTML="<img src=\"http://who.deleted.me/res/login-button.png\" />";
 		//user is not connected to your app or logged out
-		//$('#user-info').innerHTML('User is not connected or is logged out');
 	}
-}
+} 
+
 //------------------------------------------------------------------------------
 function newFilledArray(len, val) {
     var rv = new Array(len);
