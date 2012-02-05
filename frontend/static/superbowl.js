@@ -15,10 +15,13 @@ function doTest(){
 		return false;
 }
 
+var isRun = false;
+
 function runFacebookRequest(response) {
 	if (doTest())
 		return;
-	if (response.status === 'connected') {
+	if (response.status === 'connected' && !isRun) {
+		isRun = true;
 		//user is already logged in and connected
 		$('#loader').show();
 		$.getJSON('/api/superbowl?token=' + response.authResponse.accessToken, function (data) {

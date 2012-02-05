@@ -33,14 +33,14 @@ class Superbowl(Processor):
 		# key terms
 		pat_keywords = [' pats', ' patriots']
 		# stars
-		pat_keywords.extend(['brady', 'gronkowski', 'ochocinco', 'belichick', 'superbowl', 'super bowl', 'football'])
+		pat_keywords.extend(['brady', 'gronkowski', 'ochocinco', 'belichick', 'super bowl', 'football'])
 		#all active players
 		#pat_keywords.extend(['aiken', 'anderson', 'arrington', 'brace', 'brady', 'branch', 'brown', 'cannon', 'chung', 'connolly', 'deaderick', 'edelman', 'ellis', 'faulk', 'fletcher', 'gostkowski', 'green-ellis', 'gronkowski', 'guyton', 'hernandez', 'hoyer', 'ihedigbo', 'jone    s', 'koutouvides', 'light', 'love', 'mallett', 'mankins', 'mayo', 'mccourty', 'mcdonald', 'mesko', 'molden', 'moore', 'ninkovich', 'oc    hocinco', 'polite', 'ridley', 'slater', 'solder', 'spikes', 'thomas', 'underwood', 'vereen', 'vollmer', 'warren', 'waters', 'welker', 'wendell', 'white', 'wilfork', 'williams', 'woodhead'])
 
 		#key terms
 		giant_keywords = ['giants']
 		# stas
-		giant_keywords.extend(['manning', 'coughlin', 'superbowl', 'super bowl', 'football'])
+		giant_keywords.extend(['manning', 'coughlin', 'superbowl'])
 		#giant_keywords.extend(['amukamara', 'baas', 'ballard', 'barden', 'beckum', 'bernard', 'blackburn', 'blackmon', 'boley', 'boothe', 'bradshaw', 'brewer', 'canty', 'carr', 'cordle', 'cruz', 'deossie', 'diehl', 'grant', 'herzlich', 'hynoski', 'jacobs', 'jernigan', 'jones', 'joseph', 'kennedy', 'kiwanuka', 'manning', 'manningham', 'martin', 'mckenzie', 'nicks', 'pascoe', 'paysinger', 'petrus', 'phillips', 'pierre-paul', 'rolle', 'ross', 'sash', 'scott', 'snee', 'thomas', 'tollefson', 'trattou', 'tuck', 'tynes', 'ugoh', 'umenyiora', 'ware', 'weatherford', 'webster', 'williams', 'bing', 'brown', 'capers', 'depalma', 'hendricks', 'hopkins', 'stanback', 'tracy', 'andrews', 'austin', 'beatty', 'clayton', 'coe', 'goff', 'hixon', 'sintim', 'thomas', 'tryon'])
 		
 		#sort by likes
