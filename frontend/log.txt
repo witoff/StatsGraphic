@@ -79,3 +79,45 @@
 10.214.111.230:29499 - - [05/Feb/2012 20:06:21] "HTTP/1.1 GET /" - 200 OK
 10.214.111.230:29503 - - [05/Feb/2012 20:06:23] "HTTP/1.1 GET /" - 200 OK
 10.214.111.230:29510 - - [05/Feb/2012 20:06:53] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:15265 - - [05/Feb/2012 20:07:23] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:15273 - - [05/Feb/2012 20:07:53] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:15279 - - [05/Feb/2012 20:08:19] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:15279 - - [05/Feb/2012 20:08:19] "HTTP/1.1 GET /static/superbowl.js" - 304 Not Modified
+10.214.111.230:15279 - - [05/Feb/2012 20:08:19] "HTTP/1.1 GET /static/styles/main.css" - 304 Not Modified
+10.214.111.230:15279 - - [05/Feb/2012 20:08:19] "HTTP/1.1 GET /static/images/grass-main.png" - 304 Not Modified
+10.214.111.230:15279 - - [05/Feb/2012 20:08:19] "HTTP/1.1 GET /static/images/color-map.png" - 304 Not Modified
+10.214.111.230:15288 - - [05/Feb/2012 20:08:19] "HTTP/1.1 GET /static/images/comments_bar_icon.png" - 304 Not Modified
+10.214.111.230:15279 - - [05/Feb/2012 20:08:19] "HTTP/1.1 GET /static/images/giants_icon.jpg" - 304 Not Modified
+10.214.111.230:15290 - - [05/Feb/2012 20:08:29] "HTTP/1.1 GET /static/images/patriots_icon.jpg" - 304 Not Modified
+10.214.111.230:15291 - - [05/Feb/2012 20:08:29] "HTTP/1.1 GET /static/images/comment_like_bar_icon.png" - 304 Not Modified
+10.214.111.230:15292 - - [05/Feb/2012 20:08:29] "HTTP/1.1 GET /static/images/ajax-loader.1.gif" - 304 Not Modified
+10.214.111.230:15293 - - [05/Feb/2012 20:08:29] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:15294 - - [05/Feb/2012 20:08:29] "HTTP/1.1 GET /static/images/favicon.ico" - 200 
+10.214.111.230:15297 - - [05/Feb/2012 20:08:29] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:15299 - - [05/Feb/2012 20:08:29] "HTTP/1.1 GET /static/images/comment_like_bar_icon.png" - 200 
+10.214.111.230:15299 - - [05/Feb/2012 20:08:30] "HTTP/1.1 GET /static/images/patriots_icon.jpg" - 200 
+10.214.111.230:15299 - - [05/Feb/2012 20:08:30] "HTTP/1.1 GET /static/images/ajax-loader.1.gif" - 200 
+10.214.111.230:15299 - - [05/Feb/2012 20:08:36] "HTTP/1.1 GET /api/superbowl" - 200 OK
+10.214.111.230:15303 - - [05/Feb/2012 20:08:39] "HTTP/1.1 GET /static/images/favicon.ico" - 304 Not Modified
+10.214.111.230:15304 - - [05/Feb/2012 20:08:39] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:15310 - - [05/Feb/2012 20:08:49] "HTTP/1.1 GET /static/images/favicon.ico" - 304 Not Modified
+10.214.111.230:15311 - - [05/Feb/2012 20:08:49] "HTTP/1.1 GET /static/styles/main.css" - 304 Not Modified
+10.214.111.230:15312 - - [05/Feb/2012 20:08:49] "HTTP/1.1 GET /static/images/favicon.ico" - 200 
+10.214.111.230:15313 - - [05/Feb/2012 20:08:49] "HTTP/1.1 GET /static/superbowl.js" - 304 Not Modified
+10.214.111.230:15317 - - [05/Feb/2012 20:08:52] "HTTP/1.1 GET /static/images/color-map.png" - 304 Not Modified
+10.214.111.230:15317 - - [05/Feb/2012 20:08:52] "HTTP/1.1 GET /static/images/ajax-loader.1.gif" - 304 Not Modified
+10.214.111.230:15317 - - [05/Feb/2012 20:08:52] "HTTP/1.1 GET /static/images/favicon.ico" - 304 Not Modified
+10.214.111.230:15317 - - [05/Feb/2012 20:08:52] "HTTP/1.1 GET /static/images/favicon.ico" - 304 Not Modified
+10.214.111.230:15325 - - [05/Feb/2012 20:08:58] "HTTP/1.1 GET /" - 200 OK10.214.111.230:15323 - - [05/Feb/2012 20:08:58] "HTTP/1.1 GET /" - 200 OK
+
+10.214.111.230:15317 - - [05/Feb/2012 20:08:59] "HTTP/1.1 GET /api/superbowl" - 200 OK
+10.214.111.230:15334 - - [05/Feb/2012 20:09:23] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:15335 - - [05/Feb/2012 20:09:26] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:15335 - - [05/Feb/2012 20:09:27] "HTTP/1.1 GET /static/images/favicon.ico" - 304 Not Modified
+10.214.111.230:15335 - - [05/Feb/2012 20:09:27] "HTTP/1.1 GET /static/images/favicon.ico" - 304 Not Modified
+10.214.111.230:15343 - - [05/Feb/2012 20:09:27] "HTTP/1.1 GET /static/images/favicon.ico" - 304 Not Modified
+10.214.111.230:15343 - - [05/Feb/2012 20:09:27] "HTTP/1.1 GET /static/images/favicon.ico" - 304 Not Modified
+10.214.111.230:15343 - - [05/Feb/2012 20:09:28] "HTTP/1.1 GET /static/images/favicon.ico" - 304 Not Modified
+10.214.111.230:15343 - - [05/Feb/2012 20:09:28] "HTTP/1.1 GET /static/images/favicon.ico" - 304 Not Modified
+10.214.111.230:15343 - - [05/Feb/2012 20:09:28] "HTTP/1.1 GET /static/images/favicon.ico" - 304 Not Modified
+10.214.111.230:15335 - - [05/Feb/2012 20:09:36] "HTTP/1.1 GET /api/superbowl" - 200 OK
