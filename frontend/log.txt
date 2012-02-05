@@ -1,6 +1,21 @@
-Traceback (most recent call last):
-  File "root.py", line 16, in <module>
-    db = Connection().pspct
-  File "build/bdist.macosx-10.7-intel/egg/pymongo/connection.py", line 381, in __init__
-  File "build/bdist.macosx-10.7-intel/egg/pymongo/connection.py", line 659, in __find_node
-pymongo.errors.AutoReconnect: could not connect to localhost:27017: [Errno 61] Connection refused
+10.214.111.230:2149 - - [05/Feb/2012 19:57:20] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:2149 - - [05/Feb/2012 19:57:20] "HTTP/1.1 GET /static/superbowl.js" - 304 Not Modified
+10.214.111.230:64796 - - [05/Feb/2012 19:57:23] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:2149 - - [05/Feb/2012 19:57:28] "HTTP/1.1 GET /api/superbowl" - 200 OK
+10.214.111.230:64798 - - [05/Feb/2012 19:57:43] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:64798 - - [05/Feb/2012 19:57:43] "HTTP/1.1 GET /static/superbowl.js" - 200 
+10.214.111.230:64798 - - [05/Feb/2012 19:57:43] "HTTP/1.1 GET /static/styles/main.css" - 200 
+10.214.111.230:64806 - - [05/Feb/2012 19:57:43] "HTTP/1.1 GET /static/images/color-map.png" - 200 
+10.214.111.230:64805 - - [05/Feb/2012 19:57:43] "HTTP/1.1 GET /static/images/giants_icon.jpg" - 200 
+10.214.111.230:64798 - - [05/Feb/2012 19:57:43] "HTTP/1.1 GET /static/images/grass-main.png" - 200 
+10.214.111.230:64798 - - [05/Feb/2012 19:57:43] "HTTP/1.1 GET /static/images/comments_bar_icon.png" - 200 10.214.111.230:64806 - - [05/Feb/2012 19:57:43] "HTTP/1.1 GET /static/images/patriots_icon.jpg" - 200 
+
+10.214.111.230:64806 - - [05/Feb/2012 19:57:43] "HTTP/1.1 GET /static/images/ajax-loader.1.gif" - 200 
+10.214.111.230:64812 - - [05/Feb/2012 19:57:53] "HTTP/1.1 GET /static/images/comment_like_bar_icon.png" - 200 
+10.214.111.230:64817 - - [05/Feb/2012 19:57:53] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:64820 - - [05/Feb/2012 19:57:53] "HTTP/1.1 GET /favicon.ico" - 404 Not Found
+10.214.111.230:64820 - - [05/Feb/2012 19:57:54] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:64820 - - [05/Feb/2012 19:57:55] "HTTP/1.1 GET /static/styles/main.css" - 200 
+10.214.111.230:64820 - - [05/Feb/2012 19:57:55] "HTTP/1.1 HEAD /static/images/color-map.png" - 200 
+10.214.111.230:64825 - - [05/Feb/2012 19:58:03] "HTTP/1.1 HEAD /static/images/giants_icon.jpg" - 200 
+10.214.111.230:64828 - - [05/Feb/2012 19:58:03] "HTTP/1.1 HEAD /static/images/patriots_icon.jpg" - 200 
