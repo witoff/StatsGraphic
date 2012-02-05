@@ -29,7 +29,7 @@ class Grabber(object):
 
 	def getUsername(self):
 		user = self.getUser()
-		if username in user:
+		if 'username' in user:
 			return user['username']
 
 		#This error showed up online... at least capture this in the log
@@ -87,7 +87,7 @@ class Grabber(object):
 			print 'oldest request was at: ' + str(start) + ' to: ' + str(stop)
 			print str(delta)
 	
-		pprint(home_all)		
+		#pprint(home_all)		
 		return home_all
 	
 	def getFriends(self):
