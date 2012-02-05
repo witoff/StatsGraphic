@@ -34,6 +34,8 @@ class ArrayProcessor(object):
 		...]
 	"""
 	def groupByUid(self, return_posts=True):
+		if len(self.arr)==0:
+			return []
 		post_arr = sorted(self.arr, key=lambda(i): i['from']['id'])
 		posts_uid = []
 		temp = []
@@ -94,7 +96,7 @@ class ArrayProcessor(object):
 			if searchComments:
 				if 'comments' in post and 'data' in post['comments']:
 					for c in post['comments']['data']:
-						search += c['message']
+						search += c['message'].lower()
 
 			for k in keywords:
 				if k in search:

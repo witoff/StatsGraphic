@@ -52,7 +52,7 @@ class Grabber(object):
 		return []
 
 
-	def __getAllExtended(self, endpoint, chunksize=25, fromTime=getFromTime()):
+	def __getAllExtended(self, endpoint, chunksize=25, fromTime=getFromTime(), doPaging=True):
 		print 'getting /' + endpoint
 		home_all = []
 		
@@ -63,7 +63,7 @@ class Grabber(object):
 			filtered = self.__filter_dates(home, fromTime)
 			home_all.extend(filtered)
 			
-			if len(filtered)!=len(home) or len(home)==0:
+			if len(filtered)!=len(home) or len(home)==0 or not doPaging:
 				break
 			print '...'
 			home_raw = self.__getFbObj(url=home_raw['paging']['next'])
@@ -71,12 +71,14 @@ class Grabber(object):
 			n_requests = n_requests + 1
 		
 		print str(n_requests) + ' requests were made totalling ' + str(len(home_all)) + ' items'
-		start = getTime(home_all[1]['updated_time'])
-		stop = getTime(home_all[-1]['updated_time'])
-		delta = start-stop
+		
+		if len(home_all)>0:
+			start = getTime(home_all[1]['updated_time'])
+			stop = getTime(home_all[-1]['updated_time'])
+			delta = start-stop
 
-		print 'oldest request was at: ' + str(start) + ' to: ' + str(stop)
-		print str(delta)
+			print 'oldest request was at: ' + str(start) + ' to: ' + str(stop)
+			print str(delta)
 		
 		return home_all
 	
@@ -109,8 +111,8 @@ class Grabber(object):
 		checkins = self.__getFbObj(self.getUsername() + '/checkins')
 		return checkins['data']
 
-	def getHome(self):
-		return self.__getAllExtended('home', 100)
+	def getHome(self, chunksize=100, doPaging=True):
+		return self.__getAllExtended('home', chunksize, doPaging=doPaging)
 	def getFeed(self):
 		return self.__getAllExtended('feed', 100, fromTime=datetime.now() - timedelta(days=365))
 	

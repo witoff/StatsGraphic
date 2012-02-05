@@ -241,3 +241,28 @@ div#grass {
 
 
 }
+#grass div.header {
+	color: white;
+	float: left;
+	margin: 6px 28px;
+	clear: both;
+}
+#grass #title {
+	font-size: 25pt;
+	margin-left: 42px;
+	margin-top: 15px;
+}
+#grass #score {
+	font-size: 15px;
+	margin-left:49px;
+	margin-top: 0px;
+
+}
+#map #active_friends {
+	color: white;
+	float: left;
+	font-size: 46pt;
+	position: relative;
+	top: -72px;
+	left: 51px;
+}

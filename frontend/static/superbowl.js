@@ -28,7 +28,7 @@ function runFacebookRequest(response) {
 	} else {
 		//button.innerHTML="<img src=\"http://who.deleted.me/res/login-button.png\" />";
 		//user is not connected to your app or logged out
-		$('#user-info').innerHTML('User is not connected or is logged out');
+		//$('#user-info').innerHTML('User is not connected or is logged out');
 	}
 }
 //------------------------------------------------------------------------------
@@ -80,28 +80,34 @@ function processFeed(data){
     }
     else {
         // allPosts = allPosts.concat(data);
-        patsLikeCount      += data['patriots']['like_count'];
-        patsCommentCount   += data['patriots']['comment_count'];
-        giantsLikeCount    += data['giants']['like_count'];
-        giantsCommentCount += data['giants']['comment_count'];
+        patsLikeCount      += data.patriots.like_count;
+        patsCommentCount   += data.patriots.comment_count;
+        giantsLikeCount    += data.giants.like_count;
+        giantsCommentCount += data.giants.comment_count;
 		console.log('check');
 
         udpateTeamStatsView();
 		addComments(data);
         console.log('Success!\n');
-        // FB.api(response.paging.next.slice(27), processFeedResponse);
+
+		$('#active_friends').text(data.active_friends.count);
     }
 
 }
 
 function addComments(data)
 {
-	$.each(data.giants.posts, function(i, value){
+	$.each(data.giants.statuses, function gc(i, value){
 		appendCommentString(value, '#giant_comments');
-		
+		if ('comments' in value && 'data' in value.comments){
+			$.each(value.comments.data, gc)
+		}
 	});
-	$.each(data.patriots.statuses, function(i, value){
+	$.each(data.patriots.statuses, function pc(i, value){
 		appendCommentString(value, '#patriot_comments');		
+		if ('comments' in value && 'data' in value.comments){
+			$.each(value.comments.data, pc)
+		}
 	});
 
 }
