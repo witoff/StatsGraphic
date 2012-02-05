@@ -19,3 +19,63 @@
 10.214.111.230:64820 - - [05/Feb/2012 19:57:55] "HTTP/1.1 HEAD /static/images/color-map.png" - 200 
 10.214.111.230:64825 - - [05/Feb/2012 19:58:03] "HTTP/1.1 HEAD /static/images/giants_icon.jpg" - 200 
 10.214.111.230:64828 - - [05/Feb/2012 19:58:03] "HTTP/1.1 HEAD /static/images/patriots_icon.jpg" - 200 
+10.214.111.230:64839 - - [05/Feb/2012 19:58:23] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:64845 - - [05/Feb/2012 19:58:53] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:64846 - - [05/Feb/2012 19:58:57] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:64846 - - [05/Feb/2012 19:58:57] "HTTP/1.1 GET /static/superbowl.js" - 304 Not Modified
+10.214.111.230:64846 - - [05/Feb/2012 19:58:57] "HTTP/1.1 GET /favicon.ico" - 404 Not Found
+10.214.111.230:64846 - - [05/Feb/2012 19:58:58] "HTTP/1.1 GET /favicon.ico" - 404 Not Found
+10.214.111.230:64855 - - [05/Feb/2012 19:59:03] "HTTP/1.1 GET /favicon.ico" - 404 Not Found
+10.214.111.230:64855 - - [05/Feb/2012 19:59:03] "HTTP/1.1 GET /favicon.ico" - 404 Not Found
+10.214.111.230:64855 - - [05/Feb/2012 19:59:03] "HTTP/1.1 GET /favicon.ico" - 404 Not Found
+10.214.111.230:64855 - - [05/Feb/2012 19:59:03] "HTTP/1.1 GET /favicon.ico" - 404 Not Found
+10.214.111.230:64855 - - [05/Feb/2012 19:59:03] "HTTP/1.1 GET /favicon.ico" - 404 Not Found
+10.214.111.230:64846 - - [05/Feb/2012 19:59:06] "HTTP/1.1 GET /api/superbowl" - 200 OK
+10.214.111.230:64870 - - [05/Feb/2012 19:59:18] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:64874 - - [05/Feb/2012 19:59:23] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:64883 - - [05/Feb/2012 19:59:53] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:64896 - - [05/Feb/2012 20:00:23] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:64897 - - [05/Feb/2012 20:00:30] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:64897 - - [05/Feb/2012 20:00:30] "HTTP/1.1 GET /static/superbowl.js" - 304 Not Modified
+10.214.111.230:64897 - - [05/Feb/2012 20:00:30] "HTTP/1.1 GET /favicon.ico" - 404 Not Found
+10.214.111.230:64905 - - [05/Feb/2012 20:00:31] "HTTP/1.1 GET /favicon.ico" - 404 Not Found
+10.214.111.230:64905 - - [05/Feb/2012 20:00:31] "HTTP/1.1 GET /favicon.ico" - 404 Not Found
+10.214.111.230:64905 - - [05/Feb/2012 20:00:31] "HTTP/1.1 GET /favicon.ico" - 404 Not Found
+10.214.111.230:64905 - - [05/Feb/2012 20:00:31] "HTTP/1.1 GET /favicon.ico" - 404 Not Found
+10.214.111.230:64905 - - [05/Feb/2012 20:00:31] "HTTP/1.1 GET /favicon.ico" - 404 Not Found
+10.214.111.230:64905 - - [05/Feb/2012 20:00:32] "HTTP/1.1 GET /favicon.ico" - 404 Not Found
+10.214.111.230:64897 - - [05/Feb/2012 20:00:38] "HTTP/1.1 GET /api/superbowl" - 200 OK
+10.214.111.230:64918 - - [05/Feb/2012 20:00:53] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:64929 - - [05/Feb/2012 20:01:23] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:64937 - - [05/Feb/2012 20:01:53] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:29392 - - [05/Feb/2012 20:02:23] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:29398 - - [05/Feb/2012 20:02:53] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:29399 - - [05/Feb/2012 20:03:02] "HTTP/1.1 GET /favicon.ico" - 404 Not Found
+10.214.111.230:29399 - - [05/Feb/2012 20:03:02] "HTTP/1.1 GET /favicon.ico" - 404 Not Found
+10.214.111.230:29414 - - [05/Feb/2012 20:03:23] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:29422 - - [05/Feb/2012 20:03:53] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:29423 - - [05/Feb/2012 20:04:08] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:29423 - - [05/Feb/2012 20:04:09] "HTTP/1.1 GET /static/styles/main.css" - 304 Not Modified
+10.214.111.230:29423 - - [05/Feb/2012 20:04:09] "HTTP/1.1 GET /static/superbowl.js" - 304 Not Modified
+10.214.111.230:29423 - - [05/Feb/2012 20:04:09] "HTTP/1.1 GET /static/images/giants_icon.jpg" - 304 Not Modified
+10.214.111.230:29433 - - [05/Feb/2012 20:04:09] "HTTP/1.1 GET /static/images/color-map.png" - 304 Not Modified
+10.214.111.230:29433 - - [05/Feb/2012 20:04:17] "HTTP/1.1 GET /api/superbowl" - 200 OK
+10.214.111.230:29433 - - [05/Feb/2012 20:04:18] "HTTP/1.1 GET /static/images/view.png" - 304 Not Modified
+10.214.111.230:29438 - - [05/Feb/2012 20:04:18] "HTTP/1.1 GET /static/images/patriots_icon.jpg" - 304 Not Modified
+10.214.111.230:29439 - - [05/Feb/2012 20:04:19] "HTTP/1.1 GET /static/images/comment_like_bar_icon.png" - 304 Not Modified
+10.214.111.230:29440 - - [05/Feb/2012 20:04:19] "HTTP/1.1 GET /static/images/comments_bar_icon.png" - 304 Not Modified
+10.214.111.230:29441 - - [05/Feb/2012 20:04:19] "HTTP/1.1 GET /static/images/grass-main.png" - 304 Not Modified
+10.214.111.230:29442 - - [05/Feb/2012 20:04:19] "HTTP/1.1 GET /static/images/ajax-loader.1.gif" - 304 Not Modified
+10.214.111.230:29443 - - [05/Feb/2012 20:04:19] "HTTP/1.1 GET /favicon.ico" - 404 Not Found
+10.214.111.230:29446 - - [05/Feb/2012 20:04:28] "HTTP/1.1 GET /favicon.ico" - 404 Not Found
+10.214.111.230:29447 - - [05/Feb/2012 20:04:28] "HTTP/1.1 GET /static/favicon.ico" - 404 File not found
+10.214.111.230:29448 - - [05/Feb/2012 20:04:28] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:29450 - - [05/Feb/2012 20:04:28] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:29454 - - [05/Feb/2012 20:04:29] "HTTP/1.1 GET /static/favicon.ico" - 404 File not found
+10.214.111.230:29467 - - [05/Feb/2012 20:04:53] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:29480 - - [05/Feb/2012 20:05:23] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:29488 - - [05/Feb/2012 20:05:53] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:29495 - - [05/Feb/2012 20:06:21] "HTTP/1.1 HEAD /" - 200 OK
+10.214.111.230:29499 - - [05/Feb/2012 20:06:21] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:29503 - - [05/Feb/2012 20:06:23] "HTTP/1.1 GET /" - 200 OK
+10.214.111.230:29510 - - [05/Feb/2012 20:06:53] "HTTP/1.1 GET /" - 200 OK
