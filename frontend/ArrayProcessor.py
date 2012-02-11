@@ -76,16 +76,23 @@ class ArrayProcessor(object):
 		return posts_uid
 
 	def getByKeyValue(self, key, vals):
-		if not isinstance(vals, list):
-			vals = [vals]
-		
+		vals = self.__wrap_in_list(vals)
 		ret_arr = []
 		for e in self.arr:
 			if e[key] in vals:
 				ret_arr.append(e)
 		return ret_arr
 
+	""" if value is not a list, return [value].  Otherwise return value"""
+	def __wrap_in_list(self, vals):
+		if not isinstance(vals, list):
+			return [vals]
+		return vals
+
+
 	def searchPosts(self, fields, keywords, searchComments=False):
+		fields = self.__wrap_in_list(fields)	
+		keywords = self.__wrap_in_list(keywords)	
 		ret = []
 		for post in self.arr:
 			search = ""
