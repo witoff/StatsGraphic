@@ -5,7 +5,7 @@ from superbowl import *
 from pymongo import Connection
 
 urls = (
-  '/', 'epSuperbowl',
+  '/', 'epIndex',
   '/superbowl', 'epSuperbowl',
   '/superbowl/', 'epSuperbowl',
   '/api/home', 'epApiHome',

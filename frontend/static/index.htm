@@ -1,82 +1,44 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>Pspct</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
-    <script src="/static/pspct.js" type="text/javascript"></script>
-    <script src="/static/Highcharts/js/highcharts.js" type="text/javascript"></script>
-    <link  href="/static/styles/main.css" rel="stylesheet">
-<script type="text/javascript">
+<title>Perspect Home</title>
+<style type="text/css">
+#container {
+	width:100%;
+}
+#logo {
+	margin:40px auto 0px; 
+	width:329px; 
+	height:316px;
+	background-image: url(images/logo_large.png)
+}
+#contact {
+	display:block;
+	text-align:center;
+	padding-right:227px;
+}
+a {
+	color:#444444;
+	font-family: Lucida Grande;
+	font-size:10pt;
+	text-decoration: none;
+}
+a:hover
+{
+	color:#AAAAAA;
+}
+a:visited
+{
+	color:#444444;
+}
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-28689738-1']);
-  _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
+</style>
 </head>
-<body>
-<div id="fb-root"></div>
-
-<div id="user-info"></div>
-<div id="content">
-    <div id="loader" style="display: none;"> <img  src="/static/ajax-loader.gif" /> </div>
-    <div id="topPhotos"> </div>
-    <div id="pres"> </div>
-    <div id="friendsTime"> </div>
-    <div id="yourTime"> </div>
-    <div id="text"> </div>
-
-    <a id="login-btn"></a>
-    <div class="fb-login-button" show-faces="true" scope="email,user_checkins,read_stream,offline_access,publish_stream">
-        Login with Facebook
-    </div>
+<div id="container">
+<div id="logo">
 </div>
-
-<script>
-window.fbAsyncInit = function() {
-    FB.init({ appId: '246082168796906',
-	    status: true,
-	    cookie: true,
-	    xfbml: true,
-	    oauth: true});
-
-      function updateButton(response) {
-         if (response.status === 'connected') {
-            //user is already logged in and connected
-
-                $('#loader').show();    
-		$.getJSON('api/home?token=' + response.authResponse.accessToken, function (data) {
-                    plotData(data);
-                    $('#loader').hide();    
-		});
-        } else {
-	        //button.innerHTML="<img src=\"http://who.deleted.me/res/login-button.png\" />";
-            //user is not connected to your app or logged out
-             $('#user-info').innerHTML('user is not connected of is logged out');
-      }
-    
-  }
-
-  // run once with current status and whenever the status changes
-  FB.getLoginStatus(updateButton);
-  //FB.Event.subscribe('auth.login', updateButton);	
-};
-	
-(function() {
-  var e = document.createElement('script'); e.async = true;
-  e.src = document.location.protocol 
-    + '//connect.facebook.net/en_US/all.js';
-  document.getElementById('fb-root').appendChild(e);
-}());
-
-</script>
-</body> 
+<div id="contact">
+<a  href="mailto:contact@pspct.com">Contact</a>
+</div>
+</div>
 </html>
-
