@@ -6,6 +6,7 @@ from pymongo import Connection
 
 urls = (
   '/', 'epIndex',
+  '/support', 'epSupport',
   '/superbowl', 'epSuperbowl',
   '/superbowl/', 'epSuperbowl',
   '/api/home', 'epApiHome',
@@ -24,6 +25,16 @@ class epIndex (object):
 
 	def POST(self):
 		return self.GET()
+class epSupport (object):
+	def GET(self):
+		f = file('static/support.htm', 'r')
+		s = f.read()
+		f.close()
+		return s
+
+	def POST(self):
+		return self.GET()
+
 
 class epSuperbowl (object):
 	def GET(self):
